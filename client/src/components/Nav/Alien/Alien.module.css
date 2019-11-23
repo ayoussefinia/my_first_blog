@@ -1,0 +1,92 @@
+.alienContainer {
+  width: 82px;
+  height: 100%;
+
+}
+
+
+.alien1 {
+  background: white;
+  height: 35%;
+  width: 100%;
+  margin-top: 5px;
+  border-radius: 50px 50px 10px 10px;
+  box-shadow: 0px 0px 10px  red;
+}
+.middleContainer{
+  display: flex;
+  width: 100%;
+  height: 35%;
+}
+.alien2 {
+  background: white;
+  height: 100%;
+  width: 50%;
+  /* border-radius:0 0 20px 20px; */
+  transform: Rotate(-25deg) translateY(-5px) translateX(1.5px);
+  transform-origin: top left;
+  border-radius: 4px;
+  box-shadow: -6px 0px 4px -6px red;
+}
+.alien3 {
+  background: white;
+  height: 100%;
+  width: 50%;
+  /* border-radius:0 0 20px 20px; */
+  transform: Rotate(25deg) translateY(-5px) translateX(-1.5px);
+  transform-origin: top right;
+  border-radius: 4px;
+  box-shadow: 5px 3px 7px -5px red;
+}
+.alienBottom {
+  width:60%;
+  height: 36%;
+  background: rgb(255, 255, 255);
+  transform: translateY(-79%) translateX(.12px) rotate(45deg) skew(16deg, 16deg) ;
+  margin: auto;
+  border-radius:5px 0 15px 5px;
+}
+
+.eye1left {
+  position: absolute;
+  top: 0;
+  margin: auto;
+  width: 20px;
+  height: 45px;
+  background: rgb(28, 16, 58);
+  border-radius: 100%;
+  transform: translateY(80%) translateX(12px) skewY(60deg);
+  animation: colorswash 13s linear 500 alternate-reverse;
+}
+.eye2right {
+  position: absolute;
+  top: 0;
+  margin: auto;
+  width: 20px;
+  height: 45px;
+  background: rgb(28, 16, 58);
+  border-radius: 100%;
+  transform: translateY(80%) translateX(50px) skewY(-60deg);
+  animation: colorswash 13s linear 500 alternate-reverse;
+} 
+
+@keyframes colorswash {
+  0% {
+    background: rgb(15, 7, 34);
+  }
+  20% {
+    background: rgb(26, 10, 67);
+  }
+  40% {
+    background: rgb(53, 28, 114);
+  }
+  60% {
+    background: rgb(45, 29, 80);
+  }
+  80% {
+    background: rgb(21, 10, 43);
+  }
+  100% {
+    background: rgb(28, 16, 58);
+  }
+}

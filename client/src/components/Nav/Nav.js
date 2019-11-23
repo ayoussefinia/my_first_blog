@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Nav.module.css"
+import Alien from "./Alien/Alien"
 
 function Nav() {
   return (
@@ -9,7 +10,7 @@ function Nav() {
     //   </a>
     // </nav>
     <div className= {classes.navbar}>
-      hello
+      <Alien/>
     </div>
   );
 }
