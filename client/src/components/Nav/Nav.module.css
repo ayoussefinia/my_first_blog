@@ -6,18 +6,26 @@
   justify-content: center;
 }
 
-
+.spinnerContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
 .navlinkspinner {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   height: 20vh;
   width: 150px;
   position: absolute;
-  left: 0;
+  /* left: 43vw; */
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 5s;
-  transform: rotate(180deg);
+  transform: rotate(36000deg) translateY(-25px); 
+  transition: transform 10s ;
+  /* animation: spinnermove 300s linear 1s alternate;  */
+
 }
 
 @keyframes colorswash {
@@ -42,51 +50,89 @@
 }
 
 .link1 {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   background: white;
   border-radius: 100%;
   position: absolute;
   transform: translateY(-40px);
+  box-shadow: -.5px .25px 6px 2px white;
+ 
 }
 .link2 {
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   background: white;
   border-radius: 100%;
   position: absolute;
   transform: translateX(34px) translateY(-20px);
-  
+  box-shadow: -.5px .25px 6px 2px white;
+
 }
 .link3 {
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   background: white;
   border-radius: 100%;
   position: absolute;
   transform: translateX(34px) translateY(20px);
+  box-shadow: -.5px .25px 6px 2px white;
+
 }
 .link4 {
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   background: white;
   border-radius: 100%;
   position: absolute;
   transform: translateY(40px);
+  box-shadow: -.5px .25px 6px 2px white;
+
 }
 .link5 {
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   background: white;
   border-radius: 100%;
   position: absolute;
   transform: translateX(-34px) translateY(-20px);
+  box-shadow: -.5px .25px 6px 2px white;
+
 }
 .link6 {
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   background: white;
   border-radius: 100%;
   position: absolute;
   transform: translateX(-34px) translateY(20px);
+  box-shadow: -.5px .25px 6px 2px white;
+
+}
+
+@keyframes spinnermove {
+  0% {
+    left: 43vw;
+  }
+  25% {
+    left: 0vw;
+  }
+  50% {
+    left: 43vw;
+  }
+  75% {
+    left: 85vw;
+  }
+  100% {
+    left: 43vw;
+  }
+}
+
+@keyframes balldissapear {
+  0% {
+    background: white;
+  }
+  100% {
+    background: none;
+  }
 }
