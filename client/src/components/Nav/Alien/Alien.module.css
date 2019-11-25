@@ -26,7 +26,7 @@
   transform: Rotate(-25deg) translateY(-5px) translateX(1.5px);
   transform-origin: top left;
   border-radius: 4px;
-  box-shadow: -6px 0px 4px -6px red;
+  box-shadow: -6px 0px 7px -6px red;
 }
 .alien3 {
   background: white;
@@ -45,6 +45,7 @@
   transform: translateY(-79%) translateX(.12px) rotate(45deg) skew(16deg, 16deg) ;
   margin: auto;
   border-radius:5px 0 15px 5px;
+  box-shadow: 5px 6px 15px -8px  red;
 }
 
 .eye1left {
@@ -56,7 +57,9 @@
   background: rgb(28, 16, 58);
   border-radius: 100%;
   transform: translateY(80%) translateX(12px) skewY(60deg);
-  animation: colorswash 13s linear 500 alternate-reverse;
+  animation: eyecolor 13s linear 500 alternate-reverse;
+  box-shadow: 0px 1px 2px 2px rgb(28, 16, 58);
+
 }
 .eye2right {
   position: absolute;
@@ -67,21 +70,22 @@
   background: rgb(28, 16, 58);
   border-radius: 100%;
   transform: translateY(80%) translateX(50px) skewY(-60deg);
-  animation: colorswash 13s linear 500 alternate-reverse;
+  box-shadow: -1px -1px 2px 2px rgb(28, 16, 58);
+  animation: eyecolor 13s linear 500 alternate-reverse;
 } 
 
-@keyframes colorswash {
+@keyframes eyecolor {
   0% {
-    background: rgb(15, 7, 34);
+    background:  rgb(15, 7, 34);
   }
   20% {
     background: rgb(26, 10, 67);
   }
   40% {
-    background: rgb(53, 28, 114);
+    background:  rgb(53, 28, 114);
   }
   60% {
-    background: rgb(45, 29, 80);
+    background:  rgb(45, 29, 80);
   }
   80% {
     background: rgb(21, 10, 43);
@@ -90,3 +94,17 @@
     background: rgb(28, 16, 58);
   }
 }
+
+@keyframes eyemove {
+  0% {
+    border-radius: 0 0 10px 0 black;
+  }
+  50% {
+    border-radius: 0 0 10px 0 black;
+  }
+  100% {
+    border-radius: 0 0 10px 0 black;
+  }
+}
+
+

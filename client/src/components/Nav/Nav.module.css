@@ -6,6 +6,20 @@
   justify-content: center;
 }
 
+
+.navlinkspinner {
+  border: 1px solid white;
+  height: 20vh;
+  width: 150px;
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 5s;
+  transform: rotate(180deg);
+}
+
 @keyframes colorswash {
   0% {
     background: rgb(15, 7, 34);
@@ -25,4 +39,54 @@
   100% {
     background: rgb(28, 16, 58);
   }
+}
+
+.link1 {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 100%;
+  position: absolute;
+  transform: translateY(-40px);
+}
+.link2 {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 100%;
+  position: absolute;
+  transform: translateX(34px) translateY(-20px);
+  
+}
+.link3 {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 100%;
+  position: absolute;
+  transform: translateX(34px) translateY(20px);
+}
+.link4 {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 100%;
+  position: absolute;
+  transform: translateY(40px);
+}
+.link5 {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 100%;
+  position: absolute;
+  transform: translateX(-34px) translateY(-20px);
+}
+.link6 {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 100%;
+  position: absolute;
+  transform: translateX(-34px) translateY(20px);
 }

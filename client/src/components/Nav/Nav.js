@@ -9,7 +9,16 @@ function Nav() {
     //     React Reading List
     //   </a>
     // </nav>
+
     <div className= {classes.navbar}>
+      <div className={classes.navlinkspinner}>
+      <div className={classes.link1}></div>
+      <div className={classes.link2}></div>
+      <div className={classes.link3}></div>
+      <div className={classes.link4}></div>
+      <div className={classes.link5}></div>
+      <div className={classes.link6}></div>
+      </div>
       <Alien/>
     </div>
   );
