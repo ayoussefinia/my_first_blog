@@ -4,12 +4,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Detail from "./pages/Detail";
 // import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav/Nav";
+import Body from "./components/Body/Body";
 
 function App() {
   return (
     <Router>
       <div>
         <Nav />
+        <Body/>
         {/* <Switch>
           <Route exact path="/" component={Books} />
           <Route exact path="/books" component={Books} />

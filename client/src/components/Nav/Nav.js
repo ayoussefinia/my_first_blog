@@ -11,6 +11,8 @@ function Nav() {
     // </nav>
 
     <div className= {classes.navbar}>
+    <div className={classes.titleone}>The Catchy</div>
+    <div className={classes.titletwo}>Blog Title</div>
     <div className={classes.spinnerContainer}>
       <div className={classes.navlinkspinner}>
         <div className={classes.link1}></div>
