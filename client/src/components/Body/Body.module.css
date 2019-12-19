@@ -1,6 +1,26 @@
-.bodyContainer {
+.bodyContainer{
+  height: 200vh;
   width: 100vw;
-  height: 80vh;
-  display: grid;
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
 
+.contentContainer {
+  height: 100%;
+  width: 80vw;
+  border: 1px solid blue;
+  display: flex;
+}
+
+.activeArticleContainer {
+  height: 100%;
+  width: 80%;
+  border: 1px solid red;
+}
+
+.rightSideArticleListContainer {
+  height: 100%;
+  width: 20%;
+  border: 1px solid green;
 }

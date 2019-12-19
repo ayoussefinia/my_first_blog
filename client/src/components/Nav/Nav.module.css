@@ -1,10 +1,11 @@
 .navbar {
   font-weight: 100;
   background: rgb(37, 18, 82);
-  height: 20vh;
+  height: 132px;
   animation: colorswash 13s linear 50 alternate-reverse;
   display: flex;
   justify-content: center;
+  
 }
 
 .spinnerContainer {
@@ -24,30 +25,47 @@
   align-items: center;
   justify-content: center;
   transform: rotate(36000deg) translateY(-20px); 
-  transition: transform 10s ;
+  transition: transform 1.25s ;
   /* animation: spinnermove 300s linear 1s alternate;  */
 
 }
 .titleone {
-  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-family: 'Economica', sans-serif;
   font-weight: 100;
-  font-size: 3.5em;
+  font-size: 4rem;
   color: white;
   position: absolute;
-  left: 20vw;
+  left: 25vw;
   top: 2vh;
-
+  text-shadow: 3px 3px black;
 } 
 
 .titletwo {
-  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-family: 'Economica', sans-serif;
   font-weight: 100;
-  font-size: 3.5rem;
+  font-size: 4rem;
   color: white;
   position: absolute;
-  right: 20vw;
+  right: 27vw;
   top: 2vh;
+  text-shadow: 3px 3px black;
 }
+.socialMediaLinks {
+  position: absolute;
+  top:0;
+  right:0;
+  height: 20vh;
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialMediaLink {
+  margin: .5rem;
+}
+
+
 
 @keyframes colorswash {
   0% {

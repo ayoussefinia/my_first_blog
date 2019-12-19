@@ -1,0 +1,38 @@
+.SecondNav {
+  width: 100vw;
+  height: 8vh;
+
+  /* animation: colorswash 13s linear 50 alternate-reverse; */
+  /* background: rgb(37, 18, 82); */
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.SecondNavTitle{
+  font-family: 'Economica', sans-serif;
+  color: white;
+  font-size: 2rem;
+}
+
+
+@keyframes colorswash {
+  0% {
+    background: rgb(15, 7, 34);
+  }
+  20% {
+    background: rgb(26, 10, 67);
+  }
+  40% {
+    background: rgb(53, 28, 114);
+  }
+  60% {
+    background: rgb(45, 29, 80);
+  }
+  80% {
+    background: rgb(21, 10, 43);
+  }
+  100% {
+    background: rgb(28, 16, 58);
+  }
+}
