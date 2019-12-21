@@ -3,7 +3,7 @@ import classes from "./Nav.module.css";
 import Alien from "./Alien/Alien";
 
 
-var FontAwesome = require('react-fontawesome')
+var FontAwesome = require('react-fontawesome');
 
 
 function Nav() {

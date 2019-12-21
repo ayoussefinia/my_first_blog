@@ -15,7 +15,7 @@ function App() {
         <SideDrawer/>
         <Nav />
         <SecondHeader/>
-        <Body/>
+        {/* <Body/> */}
         
         {/* <Body/> */}
         <Switch>
