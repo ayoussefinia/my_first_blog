@@ -5,7 +5,7 @@
   animation: colorswash 13s linear 50 alternate-reverse;
   display: flex;
   justify-content: center;
-  
+  /* transform: translateY(20px) */
 }
 
 .spinnerContainer {

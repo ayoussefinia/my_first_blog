@@ -1,7 +1,7 @@
 .activePostCard {
   width: 90%;
   height: 100vh;
-  border: 1px solid black;
+ 
 }
 
 .titleStyles {
@@ -73,32 +73,35 @@
 
 .facebookLink {
   background: rgb(66,103,178);
-  width: 5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 50%;
   color: white;
   margin-right: 5px;
 }
 
 .linkedInLink {
   background: rgb(0,151,177);
-  width: 5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 50%;
   color: white;
 }
 
 .twitterLink {
   background: rgb(53,147,207);
-  width: 5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 50%;
   color: white;
   margin-right: 5px;
 }
@@ -106,4 +109,12 @@
 
 .shareLinksText {
   margin-left: 5px;
+}
+
+.postText {
+  margin-top: 3rem;
+  padding: 0 15px;
+  line-height: 1.75rem;
+  font-weight: 300;
+  font-size: 1.25rem;
 }

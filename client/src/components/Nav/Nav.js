@@ -16,8 +16,8 @@ function Nav() {
 
     <div>    
       <div className= {classes.navbar}>
-      <div className={classes.titleone}>Abducted in</div>
-      <div className={classes.titletwo}>Plain Sight</div>
+      {/* <div className={classes.titleone}>Abducted in</div>
+      <div className={classes.titletwo}>Plain Sight</div> */}
       <div className={classes.spinnerContainer}>
         <div className={classes.navlinkspinner}>
           <div className={classes.link1}></div>

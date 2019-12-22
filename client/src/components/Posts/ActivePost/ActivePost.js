@@ -1,6 +1,9 @@
 import React from 'react';
 import classes from './ActivePost.module.css';
+import ActivePostText from "./ActivePostText/ActivePostText";
 var FontAwesome = require('react-fontawesome');
+
+
 
 const ActivePost = (props) => {
   const imageStyles={
@@ -43,7 +46,7 @@ const ActivePost = (props) => {
         size="1x"
         // spin
         style={{ color: 'white' }}
-    /> <span className={classes.shareLinksText}>Share</span>
+    /> 
     </a>
     <a href="" className={classes.twitterLink}>
     <FontAwesome
@@ -52,7 +55,7 @@ const ActivePost = (props) => {
         size="1x"
         // spin
         style={{ color: 'white' }}
-    /> <span className={classes.shareLinksText}>Tweet</span>
+    /> 
     </a>
     <a href="" className={classes.linkedInLink}>
     <FontAwesome
@@ -61,9 +64,12 @@ const ActivePost = (props) => {
         size="1x"
         // spin
         style={{ color: 'white' }}
-    /> <span className={classes.shareLinksText}>Share</span>
+    /> 
     </a>
     </div>
+    </div>
+    <div className={classes.postText}>
+    <ActivePostText/>
     </div>
     
     </div>
