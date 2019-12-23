@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import classes from "./Body.module.css";
 import ActivePost from '../../components/Posts/ActivePost/ActivePost';
-import { spawn } from "child_process";
+import SidePosts from '../Posts/SidePosts/SidePosts';
+
 
 
 class Body extends Component {
@@ -26,7 +27,9 @@ componentDidMount() {
 
         />
        </div>
-       <div className={classes.rightSideArticleListContainer}></div>
+       <div className={classes.rightSideArticleListContainer}>
+          <SidePosts/>
+       </div>
        </div>
       </div>
     );

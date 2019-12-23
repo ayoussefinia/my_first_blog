@@ -28,14 +28,14 @@ const ActivePost = (props) => {
         name="thumbs-up"
         size="2x"
         // spin
-        style={{ color: 'black' }}
+        style={{ color: 'gray' }}
     /> <span className={classes.likes}>{props.likes}</span>
     <FontAwesome
         className={classes.socialMediaLink}
         name="thumbs-down"
         size="2x"
         // spin
-        style={{ color: 'black' }}
+        style={{ color: 'gray' }}
     />  <span className={classes.dislikes}>{props.dislikes}</span>
     </div>
     <div className={classes.imageFotterRight}>

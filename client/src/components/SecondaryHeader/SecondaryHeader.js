@@ -1,17 +1,30 @@
 import React from "react";
 import classes from "./SecondaryHeader.module.css";
-
+import { NavLink } from "react-router-dom";
 const SecondaryNav = () => {
 
   return (
     <div className={classes.SecondNav}>
-    <div className={classes.SecondNavTitle}>
-      {/* Blog, Discuss, Read about abstract thoughts, alternative opinions, and differing views on all matters Earth and beyond */}
-     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae corporis aspernatur, est odio "
+      <div className={classes.NavLinkContainer}>
+        <li className={classes.NavListitem}>
+            <NavLink to="/"  className={classes.NavigationLink}>
+                Make a Post
+            </NavLink>
+        </li>
+        <li className={classes.NavListitem}>
+            <NavLink to="/" className={classes.NavigationLink}>
+                My Posts
+            </NavLink>
+        </li>
+        <li className={classes.NavListitem}>
+            <NavLink to="/" className={classes.NavigationLink}>
+                Some other link
+            </NavLink>
+        </li>
+      
+      </div>
+
     </div>
-    
-    
- </div>
   )
 }
 

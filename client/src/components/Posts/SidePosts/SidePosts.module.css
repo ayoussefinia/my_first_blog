@@ -1,0 +1,34 @@
+.sidePostListItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+  /* padding: 5px 5px 5px 45px; */
+  font-weight: bold;
+  font-size: .9rem;
+  color: rgb(99, 98, 98);
+  box-shadow: .8px 1px 3px rgb(104, 103, 103);
+  border-radius: 5px;
+  margin-bottom: .75rem;
+}
+
+.sidePostIcons {
+  width: 35%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+}
+
+.sidePostIcon {
+  width: 100%;
+  height: 33.333%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconData {
+  margin-left: 5px;
+}

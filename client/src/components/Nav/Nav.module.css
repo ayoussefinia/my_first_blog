@@ -2,6 +2,7 @@
   font-weight: 100;
   background: rgb(37, 18, 82);
   height: 132px;
+  width: 100vw;
   animation: colorswash 13s linear 50 alternate-reverse;
   display: flex;
   justify-content: center;

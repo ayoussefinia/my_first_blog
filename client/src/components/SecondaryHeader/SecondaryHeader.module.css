@@ -15,6 +15,25 @@
   font-size: 2rem;
 }
 
+.NavLinkContainer {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.NavigationLink {
+  color: white;
+  font-family: 'Economica', sans-serif;
+  font-size: 1.5rem;
+  /* border-right: .05px solid white; */
+  box-shadow: .19px 0px 0px white;
+  padding: 0 25px; 
+}
+.NavListitem {
+  list-style-type: none;
+}
 
 @keyframes colorswash {
   0% {
