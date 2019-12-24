@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Nav.module.css";
 import Alien from "./Alien/Alien";
+import { NavLink} from "react-router-dom";
 
 
 var FontAwesome = require('react-fontawesome');
@@ -15,7 +16,11 @@ function Nav() {
     // </nav>
 
     <div>    
+
       <div className= {classes.navbar}>
+      <div className={classes.navUserName}>
+        Welcome Back: <span className={classes.firstName}>John</span>
+      </div>
       {/* <div className={classes.titleone}>Abducted in</div>
       <div className={classes.titletwo}>Plain Sight</div> */}
       <div className={classes.spinnerContainer}>
@@ -31,34 +36,10 @@ function Nav() {
       <Alien/>
       </div>
       <div className={classes.socialMediaLinks}>
-      <FontAwesome
-        className={classes.socialMediaLink}
-        name="facebook-square"
-        size="2x"
-        // spin
-        style={{ color: 'white' }}
-      />
-      <FontAwesome
-        className={classes.socialMediaLink}
-        name="instagram"
-        size="2x"
-        // spin
-        style={{ color: 'white' }}
-      />
-      <FontAwesome
-        className={classes.socialMediaLink}
-        name="linkedin-square"
-        size="2x"
-        // spin
-        style={{ color: 'white' }}
-      />
-      <FontAwesome
-        className={classes.socialMediaLink}
-        name="twitter-square"
-        size="2x"
-        // spin
-        style={{ color: 'white' }}
-      />
+        <NavLink to="/" className={classes.LogInnLinks}>
+          Log In / Sign Up
+        </NavLink>
+
       </div>
 
     </div>

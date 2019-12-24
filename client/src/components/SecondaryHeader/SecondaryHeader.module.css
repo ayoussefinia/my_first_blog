@@ -1,6 +1,6 @@
 .SecondNav {
   width: 100vw;
-  height: 8vh;
+  height: 6vh;
 
   /* animation: colorswash 13s linear 50 alternate-reverse; */
   /* background: rgb(37, 18, 82); */
@@ -16,7 +16,7 @@
 }
 
 .NavLinkContainer {
-  width: 80%;
+  width: 75vw;
   height: 100%;
   display: flex;
   justify-content: flex-start;
@@ -26,7 +26,8 @@
 .NavigationLink {
   color: white;
   font-family: 'Economica', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
   /* border-right: .05px solid white; */
   box-shadow: .19px 0px 0px white;
   padding: 0 25px; 

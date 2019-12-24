@@ -7,12 +7,13 @@ import Nav from "./components/Nav/Nav";
 import Body from "./components/Body/Body";
 import SecondHeader from "./components/SecondaryHeader/SecondaryHeader";
 import SideDrawer from './components/Nav/SideDrawer/SideDrawer';
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
   return (
     <Router>
-      <div>
+      <div >
         <SideDrawer/>
    
         <Nav />
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/books/:id" component={Detail} />
           <Route component={NoMatch} /> */}
         </Switch>
+        <Footer/>
       </div>
     </Router>
   );
