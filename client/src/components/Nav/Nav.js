@@ -36,7 +36,7 @@ function Nav() {
       <Alien/>
       </div>
       <div className={classes.socialMediaLinks}>
-        <NavLink to="/" className={classes.LogInnLinks}>
+        <NavLink to="/login" className={classes.LogInnLinks}>
           Log In / Sign Up
         </NavLink>
 
