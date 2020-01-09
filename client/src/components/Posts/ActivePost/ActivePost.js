@@ -14,7 +14,7 @@ const ActivePost = (props) => {
   }
   return(
     <div className={classes.activePostCard}>
-    <div className={classes.titleStyles}><h4>{props.title}</h4></div>
+    <div className={classes.titleStyles}><h4 className={classes.headerStyles}>{props.title}</h4></div>
     <div className={classes.articleTitleFooter}>
     <div className={classes.author}> by- {props.author}</div>
     <div className={classes.publishedDate}>Published On: {props.date}</div>

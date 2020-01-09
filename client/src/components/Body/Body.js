@@ -3,8 +3,7 @@ import classes from "./Body.module.css";
 import ActivePost from '../../components/Posts/ActivePost/ActivePost';
 import SidePosts from '../Posts/SidePosts/SidePosts';
 import Nav from "../Nav/Nav";
-import SecondHeader from "..//SecondaryHeader/SecondaryHeader";
-import SideDrawer from '..//Nav/SideDrawer/SideDrawer';
+
 import Footer from "../Footer/Footer";
 
 class Body extends Component {
@@ -16,9 +15,7 @@ componentDidMount() {
   render() {   
     return (
       <div>
-        <SideDrawer/>
-        <Nav />
-        <SecondHeader/>
+
                 <div className={classes.bodyContainer}>
         <div className={classes.contentContainer}>
         <div className={classes.wrapperDiv}>
@@ -46,7 +43,7 @@ componentDidMount() {
         </div>
       
 
-        <Footer/>
+      
       </div>
   
 

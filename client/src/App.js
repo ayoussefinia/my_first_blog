@@ -9,11 +9,15 @@ import store from "./store";
 
 
 import Nav from "./components/Nav/Nav";
+import SecondHeader from "./components/SecondaryHeader/SecondaryHeader";
+import SideDrawer from './components/Nav/SideDrawer/SideDrawer';
 import Body from "./components/Body/Body";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
+import MakeAPost from "./components/Posts/MakeAPost/MakeAPost";
+import Footer from "./components/Footer/Footer";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -40,15 +44,24 @@ function App() {
     <Provider store={store}>
       <Router>
         <div >
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
+            <SideDrawer/>
+            <Nav />
+            <SecondHeader/>
           <Switch>
+
             <Route exact path="/" component={Body} />
             {/* <Route exact path="/books" component={Books} />
             <Route exact path="/books/:id" component={Detail} />
             <Route component={NoMatch} /> */}
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
+
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/makePost" component={MakeAPost} />
           </Switch>
+
+            
+            <Footer/>
         </div>
       </Router>
     </Provider>
