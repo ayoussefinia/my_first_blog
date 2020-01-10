@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import classes from './SideDrawer.module.css';
+import {withRouter} from 'react-router-dom';
+var FontAwesome = require('react-fontawesome');
 // import { useState } from 'react';
 // import NavigationItems from '';
 let lastScrollY = 0;
@@ -11,7 +13,8 @@ class SideDrawer extends Component {
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll, true);
-
+    this.setState({joinedClasses: classes.hidden})
+    
   }
 
 componentWillUnmount() {
@@ -37,11 +40,12 @@ handleScroll = () => {
 if(lastScrollY > 150) {
   let classList = [];
   classList.push(classes.SideDrawer);
-  classList.push(classes.Closed);
+  this.state.sideDrawerToggleOpen?  classList.push(classes.Open) : classList.push(classes.Closed);
+  
   let joinedClasses = classList.join(' ');
   this.setState({joinedClasses: joinedClasses})
 } else {
-  this.setState({joinedClasses: ''})
+  this.setState({joinedClasses: classes.hidden})
 }
 };
 
@@ -49,7 +53,7 @@ if(lastScrollY > 150) {
 toggleSideDrawer = () => {
   let classList = [];
   classList.push(classes.SideDrawer);
-  this.state.sideDrawerToggleOpen? classList.push(classes.Open) : classList.push(classes.Closed);
+  !this.state.sideDrawerToggleOpen? classList.push(classes.Open) : classList.push(classes.Closed);
   let joinedClasses = classList.join(' ');
   this.setState({joinedClasses: joinedClasses, sideDrawerToggleOpen: !this.state.sideDrawerToggleOpen});
   //  this.setState({})
@@ -62,13 +66,105 @@ toggleSideDrawer = () => {
 
 render() {
   // console.log("joined classes", this.state.joinedClasses);
-  return (
-    <div className={this.state.joinedClasses} onClick={this.toggleSideDrawer}>
-    </div>
-  )
+  const {pathname} = this.props.location;
+    // console.log("your Current Path::::", pathname);
+
+let SideDrawerOpenContent =     
+<div className={classes.openSideDrawerIcons}>
+  <div className={classes.contentItemChoice}>
+    <FontAwesome
+    className={classes.contentItemChoice}
+    name="paragraph"
+    size="1x"
+    style={{ color: 'white' }}
+    />
+    <span className={classes.iconFooter}>Paragraph</span>
+  </div>
+  <div className={classes.contentItemChoice} >
+    <FontAwesome
+    className={classes.contentItemChoice}
+    name="camera"
+    size="1.5x"
+    style={{ color: 'white' }}
+    />
+    <span className={classes.iconFooter}>Image</span>
+  </div>
+  <div className={classes.contentItemChoice} >
+    <FontAwesome
+    className={classes.contentItemChoice}
+    name="bold"
+    size="1x"
+    style={{ color: 'white' }}
+    />
+    <span className={classes.iconFooter}>Heading</span>
+  </div>
+</div>
+
+let SideDrawerClosedContent = <FontAwesome
+className={classes.socialMediaLink}
+name="wrench"
+size="2x"
+// spin
+style={{ color: 'white' }}
+/> 
+
+
+
+
+
+
+  // if(!this.state.sideDrawerToggleOpen) {
+  //   SideDrawerContent = <FontAwesome
+  //   className={classes.socialMediaLink}
+  //   name="wrench"
+  //   size="2x"
+  //   // spin
+  //   style={{ color: 'white' }}
+  //   /> 
+  // } else {
+  //   SideDrawerContent = 
+  //   <div>
+  //      <div>
+  //     <FontAwesome
+  //     className={classes.socialMediaLink}
+  //     name="paragraph"
+  //     size="2x"
+  //     style={{ color: 'white' }}
+  //     />
+  //   </div>
+  //   <div>
+  //     <FontAwesome
+  //     className={classes.socialMediaLink}
+  //     name="heading"
+  //     size="2x"
+  //     style={{ color: 'white' }}
+  //     />
+  //   </div>
+  //   <div>
+  //     <FontAwesome
+  //     className={classes.socialMediaLink}
+  //     name="images"
+  //     size="2x"
+  //     style={{ color: 'white' }}
+  //     />
+  //    </div>
+  //   </div>
+   
+    
+  // }
+
+  
+    return (
+     
+      <div className={this.state.joinedClasses} onClick={this.toggleSideDrawer}>
+        {this.state.sideDrawerToggleOpen ? SideDrawerOpenContent : SideDrawerClosedContent}
+      </div>
+    )
+  
+  
 }
 
 
 }
 
-export default SideDrawer
+export default withRouter(SideDrawer)

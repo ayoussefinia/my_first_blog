@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: rotate(36000deg) translateY(-20px); 
+  transform: rotate(3600deg) translateY(-20px); 
   transition: transform 1.25s ;
   /* animation: spinnermove 300s linear 1s alternate;  */
 

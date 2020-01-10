@@ -1,49 +1,18 @@
 import React, {Component}  from 'react';
 import classes from './MakeAPost.module.css';
+import { connect } from "react-redux";
 // import ActivePostText from "./ActivePostText/ActivePostText";
 var FontAwesome = require('react-fontawesome');
 
 
 
 class MakeAPost extends Component {
-state = {
-  img: 'https://via.placeholder.com/780x400?text=Choose+a+photo',
-  bodyArr: [
-    {
-      type: 'textArea',
-      value: ''
-    },
-    {
-      type: 'textArea',
-      value: ''
-    },
-    {
-      type: 'headerFour',
-      value: ''
-    },
-    {
-      type: 'textArea',
-      value: ''
-    },
-    {
-      type: 'image',
-      source: ''
-    },
-    {
-      type: 'headerFour',
-      value: ''
-    },
-    {
-      type: 'textArea',
-      value: ''
-    }   
-  ]
-}
+
 
 
 
 imageStyles={
-    backgroundImage: 'url("' + this.state.img + '")',
+    backgroundImage: 'url("' + makePost.img + '")',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     height: '400px',
@@ -57,9 +26,7 @@ imageStyles={
   render() {
     return(
       <div className={classes.container}>
-        <div ref={this.scrollPosition}>
 
-        </div>
            <div className={classes.activePostCard}>
         {/* <div className={classes.titleStyles}><h4 className={classes.headerStyles}>{this.props.title}</h4></div> */}
         <input type="text" className={classes.articleTitleInput} placeholder="type title here"/>
@@ -173,4 +140,10 @@ imageStyles={
 
 }
 
-export default MakeAPost
+const mapStateToProps = state => ({
+  makePost: state.makePost,
+  auth: state.auth
+});
+
+// const mapDispatchToProps 
+export default connect( mapStateToProps )(MakeAPost);

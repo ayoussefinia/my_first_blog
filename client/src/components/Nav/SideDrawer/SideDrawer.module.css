@@ -1,21 +1,24 @@
 .SideDrawer {
   position: fixed;
-  width: 280px;
+  width: 120px;
   max-width: 70%;
   height: 70%;
   left: 0;
   top: 15%;
   z-index: 200;
   /* background-color: rgb(37, 18, 82); */
-  background-color: white;
-  border: 1px solid red;
+  background-color: rgb(53, 28, 114);
+  border: 1px solid white;
   padding: 32px 16px;
   box-sizing: border-box;
-  /* transition: transform .3s ease-out; */
+  border-radius: 5px;
+  opacity: 1;
+  transition: opacity 1s ease-out;
 }
 
 .hidden {
   display: none;
+  opacity: 0;
 }
 
 /* @media (min-width: 500px) {
@@ -26,8 +29,40 @@
 
 .Open {
   transform: translateX(0);
+
 }
 
 .Closed {
-  transform: translateX(-80%);
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.openSideDrawerIcons {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.iconFooter {
+  color: white;
+  font-weight: bold;
+  font-size: .8rem;
+  display: flex;
+  justify-content: center;
+}
+
+.contentItemChoice {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.contentItemChoice :hover {
+  color: gray;
+  cursor: pointer;
 }
