@@ -12,7 +12,7 @@ class MakeAPost extends Component {
 
 
 imageStyles={
-    backgroundImage: 'url("' + makePost.img + '")',
+    backgroundImage: 'url("' + this.props.makePost.img + '")',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     height: '400px',
@@ -87,10 +87,10 @@ imageStyles={
     
         
         </div>
-        <div className={classes.postText}>
+        {/* <div className={classes.postText}>
 
-        </div>
-        {this.state.bodyArr.map(el => {
+        </div> */}
+        {this.props.makePost.bodyArr.map(el => {
             if(el.type == 'textArea') {
               return(
                 <div>
