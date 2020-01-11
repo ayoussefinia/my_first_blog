@@ -1,6 +1,7 @@
 import React, {Component}  from 'react';
 import classes from './MakeAPost.module.css';
 import { connect } from "react-redux";
+import {withRouter} from 'react-router-dom';
 // import ActivePostText from "./ActivePostText/ActivePostText";
 var FontAwesome = require('react-fontawesome');
 
@@ -23,6 +24,9 @@ imageStyles={
 //   width: '50%',
 //   color: 'black'
 // }
+
+
+
   render() {
     return(
       <div className={classes.container}>
@@ -90,11 +94,21 @@ imageStyles={
         {/* <div className={classes.postText}>
 
         </div> */}
-        {this.props.makePost.bodyArr.map(el => {
+        {this.props.makePost.bodyArr.map((el, index) => {
             if(el.type == 'textArea') {
               return(
-                <div>
+                <div className={classes.textAreaDiv}
+                
+                >
                    <input className={classes.textAreaInput}              placeholder="type text..."/>
+                   <FontAwesome
+                    className= {classes.deleteIcon}
+                    name="times"
+                    size="1x"
+                    // spin
+                    style={{ color: 'black' }}
+                    onClick={() => this.props.removeParagraphFromPost(index) }
+                    /> 
                     <br/>
                     <br/>
                     <br/>
@@ -107,6 +121,13 @@ imageStyles={
               return (
                 <div>
                    <input className={classes.headerFourInput} placeholder="header..."/>
+                   <FontAwesome
+                    className= {classes.deleteIcon}
+                    name="times"
+                    size="1x"
+                    // spin
+                    style={{ color: 'black' }}
+                    /> 
                     <br/>
                     <br/>
                     
@@ -121,14 +142,21 @@ imageStyles={
               }
               return (
                 <div>
+                  <div className={classes.imageDivContainer}>
                   <div style={imageStyles} className={classes.imageDiv}>
-                 
                   <input type="text" placeholder="image Url" className={classes.bodyImageInput}/>
+                  </div>
+                  <FontAwesome
+                    className= {classes.deleteIcon}
+                    name="times"
+                    size="1x"
+                    // spin
+                    style={{ color: 'black' }}
+                    />
                   </div>
                   <br/>
                   <br/>
                 </div>
-                
               )
               
             }
@@ -145,5 +173,18 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
+const mapDispactchToProps = dispatch => {
+
+  return {
+  removeParagraphFromPost: (index) => {
+    console.log('clicked')
+    dispatch(
+    {type: 'REMOVE_PARAGRAPH_FROM_POST',
+     index: index
+    })
+  }
+};
+}
+
 // const mapDispatchToProps 
-export default connect( mapStateToProps )(MakeAPost);
+export default connect( mapStateToProps, mapDispactchToProps )(withRouter(MakeAPost));

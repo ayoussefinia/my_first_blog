@@ -166,13 +166,13 @@
 }
 
 .textAreaInput {
-  width: 100%;
+  width: 95%;
   height: 200px;
   border-radius: 5px;
 }
 
 .headerFourInput {
-  width: 100%;
+  width: 95%;
   height: 50px;
   border-radius: 5px;
   font-size: 2rem;
@@ -183,10 +183,27 @@
 }
 
 .imageDiv {
-  display: block;
+  display: inline-block;
+  width: 95%;
+  margin: 0;
 }
 
 .bodyImageInput {
   border-radius: 5px;
   margin: 5px;
+}
+/* 
+.textAreaDiv {
+  display: flex;
+  align-items: center;
+} */
+ 
+.deleteIcon {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.imageDivContainer {
+  display: flex;
+  align-items: center;
 }

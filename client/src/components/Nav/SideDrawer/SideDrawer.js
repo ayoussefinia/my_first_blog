@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import classes from './SideDrawer.module.css';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 var FontAwesome = require('react-fontawesome');
+
 // import { useState } from 'react';
 // import NavigationItems from '';
 let lastScrollY = 0;
@@ -78,7 +80,7 @@ let SideDrawerOpenContent =
     size="1x"
     style={{ color: 'white' }}
     />
-    <span className={classes.iconFooter}>Paragraph</span>
+    <span className={classes.iconFooter} onClick={this.props.addParagraphToPost}>Paragraph</span>
   </div>
   <div className={classes.contentItemChoice} >
     <FontAwesome
@@ -160,11 +162,14 @@ style={{ color: 'white' }}
         {this.state.sideDrawerToggleOpen ? SideDrawerOpenContent : SideDrawerClosedContent}
       </div>
     )
-  
-  
+}
 }
 
+const mapDispactchToProps = dispatch => {
 
+    return {
+    addParagraphToPost: () => dispatch({type: 'ADD_PARAGRAPH_TO_POST' })
+  };
 }
 
-export default withRouter(SideDrawer)
+export default connect(null, mapDispactchToProps)(withRouter(SideDrawer));

@@ -42,20 +42,36 @@ const initialState  =
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case ADD_PARAGRAPH_TO_POST:
+    case 'ADD_PARAGRAPH_TO_POST' :
 
-    const newArr = [...state.bodyArr];
-    newArr.push(
-      {
-        type: "textArea",
-        value: ''
-      }
-    )
-      return {
-        ...state,
-        bodyArr: newArr
-      };
+          const newArr = [...state.bodyArr];
 
+          newArr.push(
+              {
+                type: "textArea",
+                value: ''
+              }
+            );
+
+          return {
+            ...state,
+            bodyArr: newArr
+          };
+
+    case 'REMOVE_PARAGRAPH_FROM_POST' :
+
+
+          console.log("action.index", action);
+          const copiedArr = [...state.bodyArr];
+          for(let i=0; i<state.bodyArr.length -1; i++) {
+            let copiedObj = {...state.bodyArr[i]}
+            copiedArr[i] = copiedObj;
+          }
+          copiedArr.splice(action.index, 1);
+          return {
+            ...state,
+            bodyArr: copiedArr
+          };
     default:
       return state;
   }
