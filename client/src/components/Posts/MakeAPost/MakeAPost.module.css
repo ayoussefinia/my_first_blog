@@ -169,6 +169,7 @@
   width: 95%;
   height: 200px;
   border-radius: 5px;
+  color: rgb(58, 58, 58);
 }
 
 .headerFourInput {
@@ -176,6 +177,7 @@
   height: 50px;
   border-radius: 5px;
   font-size: 2rem;
+  color: rgb(58, 58, 58);
 }
 
 .postImage {
@@ -191,6 +193,7 @@
 .bodyImageInput {
   border-radius: 5px;
   margin: 5px;
+  width: 50%;
 }
 /* 
 .textAreaDiv {
@@ -201,9 +204,15 @@
 .deleteIcon {
   margin-left: 10px;
   display: inline-block;
+  color: black;
 }
 
+.deleteIcon:hover {
+  color: gray;
+  cursor: pointer;
+  border-radius: 10px;
+}
 .imageDivContainer {
-  display: flex;
+  display: block;
   align-items: center;
 }

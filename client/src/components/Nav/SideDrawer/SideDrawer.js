@@ -73,32 +73,32 @@ render() {
 
 let SideDrawerOpenContent =     
 <div className={classes.openSideDrawerIcons}>
-  <div className={classes.contentItemChoice}>
+  <div className={classes.contentItemChoice} onClick={this.props.addParagraphToPost}>
     <FontAwesome
     className={classes.contentItemChoice}
     name="paragraph"
     size="1x"
-    style={{ color: 'white' }}
+
     />
-    <span className={classes.iconFooter} onClick={this.props.addParagraphToPost}>Paragraph</span>
+    <span className={classes.iconFooter} >+ Paragraph</span>
   </div>
-  <div className={classes.contentItemChoice} >
+  <div className={classes.contentItemChoice}  onClick={this.props.addImageToPost}>
     <FontAwesome
     className={classes.contentItemChoice}
     name="camera"
     size="1.5x"
-    style={{ color: 'white' }}
+
     />
-    <span className={classes.iconFooter}>Image</span>
+    <span className={classes.iconFooter}>+ Image</span>
   </div>
-  <div className={classes.contentItemChoice} >
+  <div className={classes.contentItemChoice} onClick={this.props.addHeadingToPost}>
     <FontAwesome
     className={classes.contentItemChoice}
     name="bold"
     size="1x"
-    style={{ color: 'white' }}
+
     />
-    <span className={classes.iconFooter}>Heading</span>
+    <span className={classes.iconFooter}>+ Heading</span>
   </div>
 </div>
 
@@ -168,7 +168,9 @@ style={{ color: 'white' }}
 const mapDispactchToProps = dispatch => {
 
     return {
-    addParagraphToPost: () => dispatch({type: 'ADD_PARAGRAPH_TO_POST' })
+      addParagraphToPost: () => dispatch({type: 'ADD_PARAGRAPH_TO_POST' }),
+      addImageToPost: () => dispatch({type: 'ADD_IMAGE_TO_POST' }),
+      addHeadingToPost: () => dispatch({type: 'ADD_HEADING_TO_POST' })
   };
 }
 

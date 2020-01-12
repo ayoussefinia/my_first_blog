@@ -1,22 +1,16 @@
 import {
   ADD_PARAGRAPH_TO_POST,
   ADD_IMAGE_TO_POST,
-  ADD_HEADER_TO_POST
+  ADD_HEADER_TO_POST,
+  REMOVE_ITEM_FROM_POST
 } from "../actions/types";
 
 const isEmpty = require("is-empty");
 const initialState  = 
 {
+  title: '',
   img: 'https://via.placeholder.com/780x400?text=Choose+a+photo',
   bodyArr: [
-    {
-      type: 'textArea',
-      value: ''
-    },
-    {
-      type: 'textArea',
-      value: ''
-    },
     {
       type: 'headerFour',
       value: ''
@@ -27,11 +21,7 @@ const initialState  =
     },
     {
       type: 'image',
-      source: ''
-    },
-    {
-      type: 'headerFour',
-      value: ''
+      value: 'https://via.placeholder.com/350'
     },
     {
       type: 'textArea',
@@ -58,10 +48,40 @@ export default function(state = initialState, action) {
             bodyArr: newArr
           };
 
-    case 'REMOVE_PARAGRAPH_FROM_POST' :
+    case 'ADD_HEADING_TO_POST' :
 
+    const Arr = [...state.bodyArr];
 
-          console.log("action.index", action);
+    Arr.push(
+        {
+          type: "headerFour",
+          value: ''
+        }
+      );
+
+    return {
+      ...state,
+      bodyArr: Arr
+    };
+
+    case 'ADD_IMAGE_TO_POST' :
+
+    const ImgArr = [...state.bodyArr];
+
+      ImgArr.push(
+        {
+          type: "image",
+          value: ''
+        }
+      );
+
+    return {
+      ...state,
+      bodyArr: ImgArr
+    };
+
+    case 'REMOVE_ITEM_FROM_POST' :
+
           const copiedArr = [...state.bodyArr];
           for(let i=0; i<state.bodyArr.length -1; i++) {
             let copiedObj = {...state.bodyArr[i]}
@@ -72,7 +92,41 @@ export default function(state = initialState, action) {
             ...state,
             bodyArr: copiedArr
           };
+
+  case 'UPDATE_POST_TITLE' :
+
+  return {
+    ...state,
+    title: action.payload
+  };
+
+  case 'SET_MAIN_IMAGE' :
+  
+  return {
+    ...state,
+    img: action.payload
+  };
+
+  case 'UPDATE_INPUT_TEXT' :
+  console.log('set image reducer fired', action.payload, action.index);
+
+  const nextArr = [...state.bodyArr];
+  for(let i=0; i<state.bodyArr.length -1; i++) {
+    let copiedObj = {...state.bodyArr[i]}
+    nextArr[i] = copiedObj;
+  }
+  nextArr[action.index].value = action.payload;
+  return {
+    ...state,
+    bodyArr: nextArr
+  };
+
+
+
+
+
     default:
       return state;
   }
 }
+

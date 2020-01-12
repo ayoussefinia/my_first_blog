@@ -60,9 +60,11 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  color: white;
+
 }
 
-.contentItemChoice :hover {
+.contentItemChoice:hover {
   color: gray;
   cursor: pointer;
 }
