@@ -9,6 +9,7 @@ const isEmpty = require("is-empty");
 const initialState  = 
 {
   title: '',
+  category: '',
   img: 'https://via.placeholder.com/780x400?text=Choose+a+photo',
   bodyArr: [
     {
@@ -121,7 +122,12 @@ export default function(state = initialState, action) {
     bodyArr: nextArr
   };
 
-
+  case 'SET_POST_CATEGORTY' :
+  
+  return {
+    ...state,
+    category: action.payload
+  };
 
 
 

@@ -103,11 +103,11 @@ let SideDrawerOpenContent =
 </div>
 
 let SideDrawerClosedContent = <FontAwesome
-className={classes.socialMediaLink}
+className={classes.wrench}
 name="wrench"
 size="2x"
 // spin
-style={{ color: 'white' }}
+
 /> 
 
 

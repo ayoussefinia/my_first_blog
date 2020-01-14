@@ -4,7 +4,8 @@ import {
   ADD_IMAGE_TO_POST,
   ADD_HEADER_TO_POST,
   REMOVE_ITEM_FROM_POST,
-  SET_MAIN_IMAGE
+  SET_MAIN_IMAGE,
+  SET_POST_CATEGORTY
 } from "./types";
 
 
@@ -49,6 +50,16 @@ export const setMainImage = (data) => {
     payload: data
   };
 };
+
+// 'SET_POST_CATEGORTY'
+
+// export const setMainImage = (data) => {
+
+//   return {
+//     type: SET_MAIN_IMAGE,
+//     payload: data
+//   };
+// };
 
 export const twoWayBindParagraphText = (index, data) => {
 

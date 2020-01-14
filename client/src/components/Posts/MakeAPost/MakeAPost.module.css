@@ -184,35 +184,126 @@
   display: block;
 }
 
-.imageDiv {
-  display: inline-block;
-  width: 95%;
+.imageInputDiv {
+  display: flex;
+  align-items: center;
+
   margin: 0;
+
 }
 
 .bodyImageInput {
   border-radius: 5px;
-  margin: 5px;
+
   width: 50%;
+  width: 95%;
 }
-/* 
-.textAreaDiv {
+
+ .textAreaDiv {
   display: flex;
   align-items: center;
-} */
- 
+} 
+
+.headerFourDiv {
+  display: flex;
+  align-items: center;
+}
+
 .deleteIcon {
   margin-left: 10px;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   color: black;
+  border: 4px solid black;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  
 }
 
 .deleteIcon:hover {
   color: gray;
   cursor: pointer;
   border-radius: 10px;
+  background: lightcoral;
 }
 .imageDivContainer {
+  width: 100%;
   display: block;
+
+}
+
+.postImage {
+  opacity: .75;
+}
+
+
+.bottomPostButtonsDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
+
+.previewButton {
+  border-radius: 5px;
+  color: white;
+  font-weight: 400;
+  font-size: 1.75rem;
+  background: rgb(53, 28, 114);
+  margin-right:  10px;
+  border: none;
+  width: 7rem;
+  height: 3rem;
+ 
+}
+
+.previewButton:hover {
+  cursor: pointer;
+  background: white;
+  color: rgb(53, 28, 114);
+  border:  1px solid rgb(53, 28, 114);
+}
+
+.previewButton:focus {
+  outline: none;
+}
+
+.submitButton {
+  border-radius: 5px;
+  color: rgb(53, 28, 114);
+  font-weight: 400;
+  font-size: 1.75rem;
+  background: white;
+  margin-left:  10px;
+  border: 1px solid rgb(53, 28, 114);
+  width: 7rem;
+  height: 3rem;
+}
+
+.submitButton:hover  {
+  cursor: pointer;
+  background:  rgb(53, 28, 114);
+  color: white;
+}
+
+.submitButton:focus {
+  outline: none;
+}
+
+.categoryInputDiv {
+  width: 100%;
+  display:  flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.categoryInput {
+  border-radius: 5px;
+}
+/* 
+.categoryInput:focus {
+  outline: 1px solid black;
+} */

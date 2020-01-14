@@ -55,6 +55,9 @@
   justify-content: center;
 }
 
+.iconFooter:hover {
+  color: gray;
+}
 .contentItemChoice {
   display: flex;
   flex-direction: column;
@@ -67,4 +70,13 @@
 .contentItemChoice:hover {
   color: gray;
   cursor: pointer;
+}
+
+.wrench {
+  color: white;
+}
+
+.wrench:hover {
+ cursor: pointer;
+ color: gray;
 }

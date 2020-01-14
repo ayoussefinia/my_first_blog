@@ -18,6 +18,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import MakeAPost from "./components/Posts/MakeAPost/MakeAPost";
 import Footer from "./components/Footer/Footer";
+import ActivePost from "./components/Posts/ActivePost/ActivePost"
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -58,6 +59,7 @@ function App() {
 
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/makePost" component={MakeAPost} />
+            <Route exact path="/preview" component={ActivePost} />
           </Switch>
 
             
