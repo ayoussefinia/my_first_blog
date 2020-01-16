@@ -86,7 +86,7 @@ let SideDrawerOpenContent =
     <FontAwesome
     className={classes.contentItemChoice}
     name="camera"
-    size="1.5x"
+    size="1x"
 
     />
     <span className={classes.iconFooter}>+ Image</span>

@@ -17,10 +17,10 @@
   z-index: 1000;
   width: 85%;
   /* height: 100%; */
-  background: red;
-  margin: 5rem auto;
-
-
+  background: white;
+  margin: 5rem auto 40rem auto;
+  border-radius: 5px;
+  padding: 15px;
 
 }
 
@@ -42,12 +42,12 @@
   justify-content: center;
   align-items: center;
   background: rgb(53, 28, 114);
-  margin-top: 2rem;
-  margin-left: 2rem;
+  /* margin-top: 2rem; */
+  /* margin-left: 2rem; */
   border-radius: 5px;
   border: none;
   color: white;
-  position: sticky;
+  /* position: fixed; */
 }
 
 .backButtonContainer:hover {
@@ -55,10 +55,15 @@
   cursor: pointer;
   background: white;
   color: rgb(53, 28, 114);
-  
-
 }
 
+.previewHeaderDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: rgb(53, 28, 114);
+}
 
 
 .backButton {

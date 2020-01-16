@@ -1,5 +1,4 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
@@ -27,16 +26,16 @@ if (process.env.NODE_ENV === "production") {
 
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/communityblog");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/communityblog");
 
-const db = require("./config/keys").mongoURI;
-mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
+// const db = require("./config/keys").mongoURI;
+// mongoose
+//   .connect(
+//     db,
+//     { useNewUrlParser: true }
+//   )
+//   .then(() => console.log("MongoDB successfully connected"))
+//   .catch(err => console.log(err));
   
 // Passport middleware
 app.use(passport.initialize());
@@ -45,10 +44,10 @@ require("./config/passport")(passport);
 
 
 // Routes
-app.use("/api/users", users);
+// app.use("/api/users", users);
 
 // Add routes, both API and view
-// app.use(routes);
+app.use(routes);
 
 // Start the API server
 app.listen(PORT, function() {

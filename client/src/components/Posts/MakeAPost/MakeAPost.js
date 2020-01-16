@@ -3,7 +3,9 @@ import classes from './MakeAPost.module.css';
 import { connect } from "react-redux";
 import {withRouter, Redirect} from 'react-router-dom';
 import  PreviewModal  from '../../Modals/PreviewModal/PreviewModal';
+import PostModal from '../../Modals/PostModal/PostModal';
 import ActivePost from '../ActivePost/ActivePost';
+
 // import ActivePostText from "./ActivePostText/ActivePostText";
 var FontAwesome = require('react-fontawesome');
 
@@ -11,9 +13,14 @@ let imageStyles;
 
 class MakeAPost extends Component {
 state ={
-  togglePreview: true
+  togglePreview: false,
+  toggleMakePost: false
 }
 
+
+componentDidMount(){
+  console.log(this.props.auth.user);
+}
 // componentDidUpdate() {
 //   console.log('updating',  this.props.makePost.img);
 // imageStyles={
@@ -25,7 +32,15 @@ state ={
 //   }
 // }
 
+togglePreviewModal= () => {
+this.setState({togglePreview: !this.state.togglePreview})
+window.scrollTo(0,0);
+}
 
+toggleMakePostModal= () => {
+  this.setState({toggleMakePost: !this.state.toggleMakePost})
+  window.scrollTo(0,0);
+}
 
 // inputStyle= {
 //   width: '50%',
@@ -48,9 +63,16 @@ onImgLoad = ({target:img}) => {
     return(
       <div>
        {this.state.togglePreview? 
-        <PreviewModal>  
+        <PreviewModal
+          clicked={this.togglePreviewModal} 
+        >  
           <ActivePost/>
         </PreviewModal> 
+      : null}
+      {this.state.toggleMakePost? 
+        <PostModal
+          clicked={this.toggleMakePostModal} 
+        />  
       : null}
             <div className={classes.container}>
       
@@ -151,18 +173,19 @@ onImgLoad = ({target:img}) => {
       {this.props.makePost.bodyArr.map((el, index) => {
           if(el.type == 'textArea') {
             return(
-              <div>
+              <div   key={index}>
                 <div className={classes.textAreaDiv}>
                   <textarea 
                     className={classes.textAreaInput}             
                     placeholder="type text..."
                     onChange={(event) => this.props.twoWayBindParagraphText(event,index)}
                     value={this.props.makePost.bodyArr[index].value}
+                  
                     />
                   <FontAwesome
                     className= {classes.deleteIcon}
                     name="times"
-                    size="2x"
+                    size="1x"
                     onClick={() => this.props.removeItemFromPost(index) }
                     />
                 </div>
@@ -172,20 +195,21 @@ onImgLoad = ({target:img}) => {
                 <br/>
               </div>
             )
-          } else if (el.type == 'headerFour') {
+          } else if (el.type == 'header') {
             return (
-              <div>
-                <div className={classes.headerFourDiv}>
+              <div  key={index}>
+                <div className={classes.headerDiv}>
                   <input 
-                    className={classes.headerFourInput}   
+                    className={classes.headerInput}   
                     placeholder="header..."
                     onChange={(event) => this.props.twoWayBindParagraphText(event,index)}
                     value={this.props.makePost.bodyArr[index].value}
+                   
                     />
                   <FontAwesome
                     className= {classes.deleteIcon}
                     name="times"
-                    size="2x"
+                    size="1x"
                     onClick={() => this.props.removeItemFromPost(index) }
                     /> 
                 </div>
@@ -206,7 +230,7 @@ onImgLoad = ({target:img}) => {
             // const image = <img src={this.props.makePost.bodyArr[index].value}/>
            
             return (
-              <div>
+              <div key={index}>
                 <div className={classes.imageDivContainer}>
                 <div style={imageStyles} className={classes.imageInputDiv}>
                 <input 
@@ -215,11 +239,12 @@ onImgLoad = ({target:img}) => {
                   className={classes.bodyImageInput}
                   onChange={(event) => this.props.twoWayBindParagraphText(event,index)}
                   value={this.props.makePost.bodyArr[index].value}
+                  
                 />
                <FontAwesome
                   className= {classes.deleteIcon}
                   name="times"
-                  size="2x"
+                  size="1x"
                   onClick={() => this.props.removeItemFromPost(index) }
                   />
                 
@@ -242,8 +267,19 @@ onImgLoad = ({target:img}) => {
         })}
 
         <div className={classes.bottomPostButtonsDiv}>
-          <button className={classes.previewButton}>Preview</button>
-          <button className={classes.previewButton}>Submit</button>
+          <button 
+            className={classes.previewButton}
+            onClick={this.togglePreviewModal}
+          >
+            
+            Preview
+          </button>
+          <button 
+            className={classes.postButton}
+            onClick={this.toggleMakePostModal}
+          >
+            Post
+          </button>
         </div>
     </div>
       </div>
@@ -303,6 +339,12 @@ const mapDispactchToProps = dispatch => {
               payload: event.target.value
             }
       )  
+    }, publishPostToDatabase : () => {
+      dispatch(
+        {
+          type: 'PUBLISH_POST'
+        }
+      )
     }
   };
 }

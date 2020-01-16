@@ -191,3 +191,15 @@
     background: none;
   }
 }
+
+.logoutButton {
+  cursor: pointer;
+  color: white;
+  background: none;
+  border: none;
+}
+
+.logoutButton:hover {
+  color: gray;
+  
+}

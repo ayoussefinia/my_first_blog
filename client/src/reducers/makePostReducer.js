@@ -13,7 +13,7 @@ const initialState  =
   img: 'https://via.placeholder.com/780x400?text=Choose+a+photo',
   bodyArr: [
     {
-      type: 'headerFour',
+      type: 'header',
       value: ''
     },
     {
@@ -55,7 +55,7 @@ export default function(state = initialState, action) {
 
     Arr.push(
         {
-          type: "headerFour",
+          type: "header",
           value: ''
         }
       );

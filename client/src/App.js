@@ -45,11 +45,12 @@ function App() {
     <Provider store={store}>
       <Router>
         <div >
+        <SideDrawer/>
+            <Nav />
+        <SecondHeader/>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
-            <SideDrawer/>
-            <Nav />
-            <SecondHeader/>
+
           <Switch>
 
             <Route exact path="/" component={Body} />

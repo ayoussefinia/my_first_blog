@@ -1,13 +1,18 @@
 import React from "react";
 import classes from "./Nav.module.css";
 import Alien from "./Alien/Alien";
-import { NavLink} from "react-router-dom";
-
-
+import { NavLink, withRouter} from "react-router-dom";
+import { connect } from "react-redux";
+import { logoutUser } from '../../actions/authActions';
 var FontAwesome = require('react-fontawesome');
 
 
-function Nav() {
+function Nav(props) {
+  const logUserOut = () => {
+    console.log('clicked');
+    props.logoutUser();
+    // window.logcation.href();
+  }
   return (
     // <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
     //   <a className="navbar-brand" href="/">
@@ -36,9 +41,18 @@ function Nav() {
       <Alien/>
       </div>
       <div className={classes.socialMediaLinks}>
-        <NavLink to="/login" className={classes.LogInnLinks}>
+      { props.auth.isAuthenticated ? 
+      <button
+        className={classes.logoutButton}
+        onClick={logUserOut}
+      >
+        Logout
+      </button> :
+      <NavLink to="/login" className={classes.LogInnLinks}>
           Log In / Sign Up
-        </NavLink>
+      </NavLink>
+      }
+        
 
       </div>
 
@@ -47,4 +61,24 @@ function Nav() {
   );
 }
 
-export default Nav;
+// const mapDispactchToProps = dispatch => {
+
+//   return {
+//     removeItemFromPost: (index) => {
+//       dispatch(
+//         {
+//           type: 'REMOVE_ITEM_FROM_POST',
+//           index: index
+//         }
+//       )
+//     },
+//   }
+// }
+
+const mapStateToProps = state => ({
+  makePost: state.makePost,
+  auth: state.auth
+});
+
+
+export default connect( mapStateToProps, {logoutUser})(withRouter(Nav));
