@@ -5,6 +5,8 @@ import {withRouter, Redirect} from 'react-router-dom';
 import  PreviewModal  from '../../Modals/PreviewModal/PreviewModal';
 import PostModal from '../../Modals/PostModal/PostModal';
 import ActivePost from '../ActivePost/ActivePost';
+import {publishPost} from '../../../actions/authActions';
+// import {togglePublushModal} from '../../../actions/authActions';
 
 // import ActivePostText from "./ActivePostText/ActivePostText";
 var FontAwesome = require('react-fontawesome');
@@ -38,9 +40,15 @@ window.scrollTo(0,0);
 }
 
 toggleMakePostModal= () => {
-  this.setState({toggleMakePost: !this.state.toggleMakePost})
+  // this.setState({toggleMakePost: !this.state.toggleMakePost})
+  this.props.toggleMakePostModal();
   window.scrollTo(0,0);
 }
+postArticle = () => {
+  this.props.publishPostToDatabase(this.props.makePost, this.props.auth)
+ 
+}
+
 
 // inputStyle= {
 //   width: '50%',
@@ -69,9 +77,10 @@ onImgLoad = ({target:img}) => {
           <ActivePost/>
         </PreviewModal> 
       : null}
-      {this.state.toggleMakePost? 
+      {this.props.makePost.modalOpen? 
         <PostModal
-          clicked={this.toggleMakePostModal} 
+          clicked={this.props.toggleMakePostModal} 
+          post = {this.postArticle}
         />  
       : null}
             <div className={classes.container}>
@@ -339,10 +348,16 @@ const mapDispactchToProps = dispatch => {
               payload: event.target.value
             }
       )  
-    }, publishPostToDatabase : () => {
+    }, 
+    publishPostToDatabase : (postState, authState) => {
+      dispatch(
+        publishPost(postState, authState)
+      )
+    },
+    toggleMakePostModal : () => {
       dispatch(
         {
-          type: 'PUBLISH_POST'
+          type: 'TOGGLE_PUBLISH_MODAL'
         }
       )
     }

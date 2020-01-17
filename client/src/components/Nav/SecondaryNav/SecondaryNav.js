@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./SecondaryHeader.module.css";
+import classes from "./SecondaryNav.module.css";
 import { NavLink } from "react-router-dom";
 const SecondaryNav = () => {
 
@@ -7,7 +7,7 @@ const SecondaryNav = () => {
     <div className={classes.SecondNav}>
       <div className={classes.NavLinkContainer}>
         <li className={classes.NavListitem}>
-            <NavLink to="/"  className={classes.NavigationLink}>
+            <NavLink to="/makePost"  className={classes.NavigationLink}>
                 Make a Post
             </NavLink>
         </li>

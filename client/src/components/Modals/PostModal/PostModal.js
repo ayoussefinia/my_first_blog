@@ -22,7 +22,12 @@ const PostModal = (props) => {
           onClick={props.clicked}
         >Nevermind
         </button>
-        <button className={classes.Continue}>Continue</button>
+        <button 
+          className={classes.Continue}
+          onClick={props.post}
+        >
+          Continue
+          </button>
       </div>
     </div>
     <div className={classes.darkShadowBackground}></div>

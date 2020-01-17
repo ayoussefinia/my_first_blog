@@ -4,7 +4,11 @@ import jwt_decode from "jwt-decode";
 import {
   GET_ERRORS,
   SET_CURRENT_USER,
-  USER_LOADING
+  USER_LOADING,
+  PUBLISH_POST,
+  RESET_STATE,
+  TOGGLE_PUBLISH_MODAL,
+  HANDLE_PUBLISH_ERROR
 } from "./types";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -57,7 +61,7 @@ export const setUserLoading = () => {
 };
 // Log user out
 export const logoutUser = () => dispatch => {
-  console.log('logout user fired')
+  
   // Remove token from local storage
   localStorage.removeItem("jwtToken");
   // Remove auth header for future requests
@@ -65,3 +69,49 @@ export const logoutUser = () => dispatch => {
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };
+
+export const resetState = () => dispatch => {
+  dispatch(togglePublishModal());
+  return {
+    type: RESET_STATE
+  }
+}
+
+export const togglePublishModal = () => {
+  return {
+    type: TOGGLE_PUBLISH_MODAL
+  }
+}
+
+export const handlePublishError = () => dispatch =>  {
+  dispatch(togglePublishModal());
+  return {
+    type: HANDLE_PUBLISH_ERROR
+  }
+}
+
+export const publishPost = (postState, authState) => dispatch => {
+  console.log('publish post called');
+  const postObject = {
+    category: postState.category,
+    title: postState.title,
+    author: authState.user.name,
+    image: postState.img,
+    body: postState.bodyArr,
+    authorId: authState.user.id,
+    likes: 0,
+    dislikes: 0,
+    comments: 0
+  }
+
+  axios.post('/api/posts', postObject).then(response => {
+    console.log(response.data)
+    dispatch(resetState());
+    // return response;
+
+  }).catch(err => {
+    console.log('ERROR PUBLISHING POST:::', err);
+    dispatch(handlePublishError());
+})
+}
+

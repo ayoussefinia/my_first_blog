@@ -9,7 +9,7 @@ import store from "./store";
 
 
 import Nav from "./components/Nav/Nav";
-import SecondHeader from "./components/SecondaryHeader/SecondaryHeader";
+import SecondNav from "./components/Nav/SecondaryNav/SecondaryNav";
 import SideDrawer from './components/Nav/SideDrawer/SideDrawer';
 import Body from "./components/Body/Body";
 import Register from "./components/Auth/Register";
@@ -47,7 +47,7 @@ function App() {
         <div >
         <SideDrawer/>
             <Nav />
-        <SecondHeader/>
+        <SecondNav/>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
 

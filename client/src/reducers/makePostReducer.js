@@ -2,12 +2,15 @@ import {
   ADD_PARAGRAPH_TO_POST,
   ADD_IMAGE_TO_POST,
   ADD_HEADER_TO_POST,
-  REMOVE_ITEM_FROM_POST
+  REMOVE_ITEM_FROM_POST,
+  RESET_STATE,
+  HANDLE_PUBLISH_ERROR
 } from "../actions/types";
 
 const isEmpty = require("is-empty");
 const initialState  = 
 {
+  modalOpen: false,
   title: '',
   category: '',
   img: 'https://via.placeholder.com/780x400?text=Choose+a+photo',
@@ -129,6 +132,19 @@ export default function(state = initialState, action) {
     category: action.payload
   };
 
+  case 'RESET_STATE' :
+  
+  return {
+    initialState
+  }
+
+  case 'TOGGLE_PUBLISH_MODAL' :
+
+  console.log('***********************************')
+  return {
+    ...state,
+    modalOpen: !state.modalOpen
+  }
 
 
     default:
