@@ -45,9 +45,9 @@ function App() {
     <Provider store={store}>
       <Router>
         <div >
-        <SideDrawer/>
+        {/* <SideDrawer/>
             <Nav />
-        <SecondNav/>
+        <SecondNav/> */}
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
 
@@ -64,7 +64,7 @@ function App() {
           </Switch>
 
             
-            <Footer/>
+            {/* <Footer/> */}
         </div>
       </Router>
     </Provider>

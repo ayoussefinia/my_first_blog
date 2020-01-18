@@ -135,12 +135,12 @@ export default function(state = initialState, action) {
   case 'RESET_STATE' :
   
   return {
-    initialState
+    ...initialState
   }
 
   case 'TOGGLE_PUBLISH_MODAL' :
 
-  console.log('***********************************')
+ 
   return {
     ...state,
     modalOpen: !state.modalOpen

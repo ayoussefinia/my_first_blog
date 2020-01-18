@@ -155,16 +155,18 @@ size="2x"
     
   // }
 
-  
+  // this.props.locaiton.pathname === 'makePost' ?  : null
+      
     return (
-     
+
       <div className={this.state.joinedClasses} onClick={this.toggleSideDrawer}>
         {this.state.sideDrawerToggleOpen ? SideDrawerOpenContent : SideDrawerClosedContent}
-      </div>
+      </div> 
+   
     )
-}
-}
 
+ }
+}
 const mapDispactchToProps = dispatch => {
 
     return {

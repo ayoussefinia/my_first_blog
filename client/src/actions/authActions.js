@@ -70,8 +70,8 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 };
 
-export const resetState = () => dispatch => {
-  dispatch(togglePublishModal());
+export const resetState = () =>  {
+  // dispatch(togglePublishModal());
   return {
     type: RESET_STATE
   }
@@ -84,7 +84,7 @@ export const togglePublishModal = () => {
 }
 
 export const handlePublishError = () => dispatch =>  {
-  dispatch(togglePublishModal());
+  // dispatch(togglePublishModal());
   return {
     type: HANDLE_PUBLISH_ERROR
   }

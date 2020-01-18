@@ -6,9 +6,10 @@ import  PreviewModal  from '../../Modals/PreviewModal/PreviewModal';
 import PostModal from '../../Modals/PostModal/PostModal';
 import ActivePost from '../ActivePost/ActivePost';
 import {publishPost} from '../../../actions/authActions';
-// import {togglePublushModal} from '../../../actions/authActions';
-
-// import ActivePostText from "./ActivePostText/ActivePostText";
+import Nav from '../../Nav/Nav';
+import SecondaryNav from '../../Nav/SecondaryNav/SecondaryNav';
+import Footer from '../../Footer/Footer';
+import SideDrawer from '../../Nav/SideDrawer/SideDrawer';
 var FontAwesome = require('react-fontawesome');
 
 let imageStyles;
@@ -23,16 +24,6 @@ state ={
 componentDidMount(){
   console.log(this.props.auth.user);
 }
-// componentDidUpdate() {
-//   console.log('updating',  this.props.makePost.img);
-// imageStyles={
-//     backgroundImage: 'url("' + this.props.makePost.img + '")',
-//     backgroundPosition: 'center',
-//     backgroundSize: 'cover',
-//     height: '400px',
-
-//   }
-// }
 
 togglePreviewModal= () => {
 this.setState({togglePreview: !this.state.togglePreview})
@@ -70,6 +61,9 @@ onImgLoad = ({target:img}) => {
   render() {
     return(
       <div>
+      <Nav/>
+      <SecondaryNav/>
+      <SideDrawer/>
        {this.state.togglePreview? 
         <PreviewModal
           clicked={this.togglePreviewModal} 
@@ -269,6 +263,8 @@ onImgLoad = ({target:img}) => {
                 </div>
                 <br/>
                 <br/>
+
+              
               </div>
             )
             
@@ -291,11 +287,13 @@ onImgLoad = ({target:img}) => {
           </button>
         </div>
     </div>
-      </div>
+
+    <Footer/>
+  </div>
       
 
-     
-    )
+    
+  )
   }
 
 }

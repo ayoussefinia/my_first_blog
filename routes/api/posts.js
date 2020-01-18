@@ -6,6 +6,8 @@ router.route("/")
   .get(postsController.findAll)
   .post(postsController.create);
 
+router.route("/newest")
+  .get(postsController.findNewest);
 // Matches with "/api/books/:id"
 router
   .route("/:id")

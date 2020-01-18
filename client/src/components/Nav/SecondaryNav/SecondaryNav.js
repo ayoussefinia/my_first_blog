@@ -6,19 +6,21 @@ const SecondaryNav = () => {
   return (
     <div className={classes.SecondNav}>
       <div className={classes.NavLinkContainer}>
+
+        <li className={classes.NavListitem}>
+            <NavLink to="/" className={classes.NavigationLink}>
+                Home
+            </NavLink>
+        </li>
         <li className={classes.NavListitem}>
             <NavLink to="/makePost"  className={classes.NavigationLink}>
                 Make a Post
             </NavLink>
         </li>
+
         <li className={classes.NavListitem}>
             <NavLink to="/" className={classes.NavigationLink}>
                 My Posts
-            </NavLink>
-        </li>
-        <li className={classes.NavListitem}>
-            <NavLink to="/" className={classes.NavigationLink}>
-                Some other link
             </NavLink>
         </li>
       

@@ -35,5 +35,13 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  findNewest: function(req, res) {
+    db.Post
+  .findOne(req.query)
+  .sort({ date: -1 })
+  .limit(1)
+  .then(dbModel => res.json(dbModel))
+  .catch(err => res.status(422).json(err));
+}
 };

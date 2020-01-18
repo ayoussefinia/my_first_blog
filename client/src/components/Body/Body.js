@@ -1,36 +1,81 @@
 import React, { Component } from "react";
+import {withRouter} from "react-router-dom";
 import classes from "./Body.module.css";
-import ActivePost from '../../components/Posts/ActivePost/ActivePost';
+import ActiveMainPost from '../../components/Posts/ActiveMainPost/ActiveMainPost';
 import SidePosts from '../Posts/SidePosts/SidePosts';
 import Nav from "../Nav/Nav";
-
+import SecondaryNav from '../Nav/SecondaryNav/SecondaryNav'
+import axios from 'axios';
 import Footer from "../Footer/Footer";
-
+import {connect} from 'react-redux';
+import {fetchFirstArticle} from '../../actions/readActions';
 class Body extends Component {
+
+// state= {
+//   category: '',
+//   title: '',
+//   author: '',
+//   date: '',
+//   image: '',
+//   body: [
+//     {
+//       type: '',
+//       value: ''
+//     }
+//   ],
+//   likes: '',
+//   dislikes: '',
+//   comments: '',
+// }
+
+// MainArticle = <div></div>;
+
 componentDidMount() {
-  console.log("body loaded")
+  this.props.inititalizeMainArticle();
+  // console.log("body loaded");
+
+  // axios.get('/api/posts/newest').then(response => {
+  //   console.log(response.data)
+  //   this.setState({
+  //     category: response.data.category,
+  //     title: response.data.title,
+  //     author: response.data.author,
+  //     date: response.data.date,
+  //     image: response.data.image,
+  //     body: response.data.body,
+  //     likes: response.data.likes,
+  //     dislikes: response.data.dislikes,
+  //     comments: response.data.comments
+  //   })
+
+
+  // })
 }
 
 
+ 
   render() {   
     return (
       <div>
-
-                <div className={classes.bodyContainer}>
+      <Nav/>
+      <SecondaryNav/>
+        <div className={classes.bodyContainer}>
         <div className={classes.contentContainer}>
         <div className={classes.wrapperDiv}>
         <div className={classes.activeArticleContainer}>
-        <ActivePost   
-            img='https://images.unsplash.com/photo-1521478413868-1bbd982fa4a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'
-            alt='new years picture'
-            title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde libero modi asperiores nihil velit minus eligendi? "
-            author="Jake Jakeson"
-            date="December 15th 2019"
-            likes='10'
-            dislikes='4'
+        
+        <ActiveMainPost   
+          image={this.props.readPost.image}
+          title={this.props.readPost.title}
+          author={this.props.readPost.author}
+          date= {this.props.readPost.date}
+          likes={this.props.readPost.likes}
+          dislikes={this.props.readPost.dislikes}
+          comments={this.props.readPost.comments}
+          body={this.props.readPost.body}
+          category={this.props.readPost.category}
+        />
 
-          />
-          
         </div>
         <div className={classes.rightSideArticleListContainer}>
             <SidePosts/>
@@ -43,7 +88,7 @@ componentDidMount() {
         </div>
       
 
-      
+      <Footer/>
       </div>
   
 
@@ -52,4 +97,19 @@ componentDidMount() {
 
 }
 
-export default Body;
+const mapDispactchToProps = dispatch => {
+
+return {
+    setMainArticle: (id) => dispatch(
+      {type: 'SET_MAIN_ARTICLE',
+       postId: id 
+     }),
+     inititalizeMainArticle: () => dispatch(fetchFirstArticle())
+};
+}
+const mapStateToProps = state => ({
+  readPost: state.readPost,
+  auth: state.auth
+});
+
+export default connect( mapStateToProps, mapDispactchToProps )(withRouter(Body));

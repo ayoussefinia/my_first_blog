@@ -1,11 +1,14 @@
-.bodyContainer{
- 
+body {
+  background: rgb(24,26,27);;
+}
 
+.bodyContainer{
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 3rem;
+  background: rgb(24,26,27);
  
 }
 
@@ -19,8 +22,8 @@
   display: block;
   /* height: auto; */
   padding: 5vh 1vw 5vw 3vw;
-  box-shadow: 3px 1px rgb(214, 211, 211), -1px 0 .4em rgb(218, 218, 211);
-
+  box-shadow: .5px 1px rgb(72, 72, 72), 0px 0px 10px 0px rgb(72, 72, 72);
+  color: white;
  
 }
 
