@@ -9,6 +9,7 @@ body {
   align-items: center;
   margin-top: 3rem;
   background: rgb(24,26,27);
+  margin-bottom: 5rem;
  
 }
 
@@ -51,15 +52,6 @@ body {
 }
 
 
-.commentBox {
-  border: 1px solid black; 
-  width: 75vw;
-  padding: 0 3vw;
-  margin: auto;
-  /* height: 10rem; */
-  margin-bottom: 50px;
-  margin-bottom: 10rem;
-}
 
 .wrapperDiv {
   display: block;

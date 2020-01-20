@@ -8,7 +8,11 @@ router.route("/")
 
 router.route("/newest")
   .get(postsController.findNewest);
-// Matches with "/api/books/:id"
+
+router.route("/byUser/:userId")
+  .get(postsController.findUserPosts);
+
+// Matches with "/api/posts/:id"
 router
   .route("/:id")
   .get(postsController.findById)

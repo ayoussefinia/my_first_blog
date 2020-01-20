@@ -43,5 +43,14 @@ module.exports = {
   .limit(1)
   .then(dbModel => res.json(dbModel))
   .catch(err => res.status(422).json(err));
+},
+findUserPosts: function(req, res) {
+  console.log('*******************made it into controller');
+  db.Post
+  .find({authorId: req.params.userId})
+  .sort({date: -1})
+  .limit(12)
+  .then(dbPosts => res.json(dbPosts))
+  .catch(err => res.status(422).json(err))
 }
 };

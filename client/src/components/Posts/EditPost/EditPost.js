@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import classes from './MakeAPost.module.css';
+import classes from './EditPost.module.css';
 import { connect } from "react-redux";
 import {withRouter, Redirect} from 'react-router-dom';
 import  PreviewModal  from '../../Modals/PreviewModal/PreviewModal';
@@ -36,7 +36,7 @@ toggleMakePostModal= () => {
   window.scrollTo(0,0);
 }
 postArticle = () => {
-  this.props.publishPostToDatabase(this.props.makePost, this.props.auth)
+  this.props.publishPostToDatabase(this.props.editPost, this.props.auth)
  
 }
 
@@ -61,24 +61,25 @@ onImgLoad = ({target:img}) => {
   render() {
     return(
       <div>
+        
       <Nav/>
       <SecondaryNav/>
       <SideDrawer/>
+      hello edit post
        {this.state.togglePreview? 
         <PreviewModal
-          clicked={this.togglePreviewModal}
-           
+          clicked={this.togglePreviewModal} 
         >  
           <PreviewPost
-            category={this.props.editPost.category}
-            title={this.props.editPost.title}
-            image={this.props.editPost.image}
-            body={this.props.editPost.bodyArr}
-            author={this.props.auth.user.name}
+           category={this.props.editPost.category}
+           title={this.props.editPost.title}
+           image={this.props.editPost.img}
+           body={this.props.editPost.bodyArr}
+           author={this.props.auth.user.name}
           />
         </PreviewModal> 
       : null}
-      {this.props.makePost.modalOpen? 
+      {this.props.editPost.modalOpen? 
         <PostModal
           clicked={this.props.toggleMakePostModal} 
           post = {this.postArticle}
@@ -92,7 +93,7 @@ onImgLoad = ({target:img}) => {
           type="text" 
           placeholder="what category?"
           onChange={this.props.twoWayBindCategory}
-          value = {this.props.makePost.category}
+          value = {this.props.editPost.category}
           className={classes.categoryInput}
         />
       </div>
@@ -103,7 +104,7 @@ onImgLoad = ({target:img}) => {
             className={classes.articleTitleInput} 
             placeholder="type title here"
             onChange= {this.props.twoWayBindPostTitle}
-            value =  {this.props.makePost.title}
+            value =  {this.props.editPost.title}
             />
 
       <div className={classes.articleTitleFooter}>
@@ -113,7 +114,7 @@ onImgLoad = ({target:img}) => {
       <div 
           style={
               {
-                backgroundImage: 'url("' + this.props.makePost.img + '")',
+                backgroundImage: 'url("' + this.props.editPost.img + '")',
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 height: '400px',
@@ -124,7 +125,7 @@ onImgLoad = ({target:img}) => {
                type="text" 
                placeholder='paste image Url'
                onChange= {this.props.setMainImage}
-               value =  {this.props.makePost.image}
+               value =  {this.props.editPost.img}
                />
       </div>
       <div className={classes.imageFooter}>
@@ -135,6 +136,7 @@ onImgLoad = ({target:img}) => {
           size="2x"
           // spin
           style={{ color: 'gray' }}
+          disabled='true'
       /> <span className={classes.likes}>{this.props.likes}</span>
       <FontAwesome
           className={classes.socialMediaLink}
@@ -142,36 +144,37 @@ onImgLoad = ({target:img}) => {
           size="2x"
           // spin
           style={{ color: 'gray' }}
+          disabled='true'
       />  <span className={classes.dislikes}>{this.props.dislikes}</span>
       </div>
       <div className={classes.imageFotterRight}>
-      <a href="" className={classes.facebookLink}>
+      <div  className={classes.facebookLink}>
       <FontAwesome
           className={classes.facebookShareLink}
           name="facebook"
           size="1x"
-          // spin
+          disabled='true'
           style={{ color: 'white' }}
       /> 
-      </a>
-      <a href="" className={classes.twitterLink}>
+      </div>
+      <div  className={classes.twitterLink}>
       <FontAwesome
          
           name="twitter"
           size="1x"
-          // spin
+          disabled='true'
           style={{ color: 'white' }}
       /> 
-      </a>
-      <a href="" className={classes.linkedInLink}>
+      </div>
+      <div  disabled='true' className={classes.linkedInLink}>
       <FontAwesome
          
           name="linkedin"
           size="1x"
-          // spin
+          disabled='true'
           style={{ color: 'white' }}
       /> 
-      </a>
+      </div>
       </div>
       </div>
   
@@ -180,7 +183,7 @@ onImgLoad = ({target:img}) => {
       {/* <div className={classes.postText}>
 
       </div> */}
-      {this.props.makePost.bodyArr.map((el, index) => {
+      {this.props.editPost.bodyArr.map((el, index) => {
           if(el.type == 'textArea') {
             return(
               <div   key={index}>
@@ -189,7 +192,7 @@ onImgLoad = ({target:img}) => {
                     className={classes.textAreaInput}             
                     placeholder="type text..."
                     onChange={(event) => this.props.twoWayBindParagraphText(event,index)}
-                    value={this.props.makePost.bodyArr[index].value}
+                    value={this.props.editPost.bodyArr[index].value}
                   
                     />
                   <FontAwesome
@@ -213,7 +216,7 @@ onImgLoad = ({target:img}) => {
                     className={classes.headerInput}   
                     placeholder="header..."
                     onChange={(event) => this.props.twoWayBindParagraphText(event,index)}
-                    value={this.props.makePost.bodyArr[index].value}
+                    value={this.props.editPost.bodyArr[index].value}
                    
                     />
                   <FontAwesome
@@ -248,7 +251,7 @@ onImgLoad = ({target:img}) => {
                   placeholder="image Url" 
                   className={classes.bodyImageInput}
                   onChange={(event) => this.props.twoWayBindParagraphText(event,index)}
-                  value={this.props.makePost.bodyArr[index].value}
+                  value={this.props.editPost.bodyArr[index].value}
                   
                 />
                <FontAwesome
@@ -262,7 +265,7 @@ onImgLoad = ({target:img}) => {
                 <br/>
               
                   <img  
-                    src={this.props.makePost.bodyArr[index].value}
+                    src={this.props.editPost.bodyArr[index].value}
                     onLoad={this.onImgLoad}
                     className={classes.postImage}
                     style={{width: this.state.imgWidth, height: this.state.imgHeight}}
@@ -306,7 +309,7 @@ onImgLoad = ({target:img}) => {
 }
 
 const mapStateToProps = state => ({
-  makePost: state.makePost,
+  editPost: state.editPost,
   auth: state.auth
 });
 

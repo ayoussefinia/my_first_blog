@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {withRouter} from "react-router-dom";
+import {withRouter, Redirect} from "react-router-dom";
 import classes from "./Body.module.css";
 import ActiveMainPost from '../../components/Posts/ActiveMainPost/ActiveMainPost';
 import SidePosts from '../Posts/SidePosts/SidePosts';
@@ -9,29 +9,19 @@ import axios from 'axios';
 import Footer from "../Footer/Footer";
 import {connect} from 'react-redux';
 import {fetchFirstArticle} from '../../actions/readActions';
+
 class Body extends Component {
 
-// state= {
-//   category: '',
-//   title: '',
-//   author: '',
-//   date: '',
-//   image: '',
-//   body: [
-//     {
-//       type: '',
-//       value: ''
-//     }
-//   ],
-//   likes: '',
-//   dislikes: '',
-//   comments: '',
-// }
+ state= {
+    mainArticleClicked: false
+  }
 
-// MainArticle = <div></div>;
+
 
 componentDidMount() {
+  
   this.props.inititalizeMainArticle();
+
   // console.log("body loaded");
 
   // axios.get('/api/posts/newest').then(response => {
@@ -53,16 +43,35 @@ componentDidMount() {
 }
 
 
- 
+
+renderRedirectToCommentShare(){
+  if (this.state.mainArticleClicked) {
+    // console.log()
+    return <Redirect to={'/post/'+ this.props.readPost.id}/>
+  }
+}
+setRedirect() {
+  // console.log('set redirect called')
+  // console.log(this);
+  this.setState({mainArticleClicked: true});
+}
+
+// this.state.mainArticleClicked? <Redirect to=> : 
   render() {   
+  
     return (
+    
       <div>
+      {this.renderRedirectToCommentShare()}
       <Nav/>
       <SecondaryNav/>
         <div className={classes.bodyContainer}>
         <div className={classes.contentContainer}>
         <div className={classes.wrapperDiv}>
-        <div className={classes.activeArticleContainer}>
+        <div 
+          className={classes.activeArticleContainer}
+          onClick={this.setRedirect.bind(this)}
+        >
         
         <ActiveMainPost   
           image={this.props.readPost.image}
@@ -83,20 +92,20 @@ componentDidMount() {
         </div>
        
         </div>
-        <div className={classes.commentBox}>hello</div>
+
 
         </div>
       
 
       <Footer/>
+    
       </div>
-  
+
 
     );
+
   }
-
 }
-
 const mapDispactchToProps = dispatch => {
 
 return {
@@ -104,7 +113,10 @@ return {
       {type: 'SET_MAIN_ARTICLE',
        postId: id 
      }),
-     inititalizeMainArticle: () => dispatch(fetchFirstArticle())
+     inititalizeMainArticle: () => dispatch(fetchFirstArticle()),
+     setMainArticle: () => dispatch(
+      {type: 'REDIRECT_TO_COMMENT',
+     }),
 };
 }
 const mapStateToProps = state => ({

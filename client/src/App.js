@@ -7,7 +7,7 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 
-
+import MyPosts from "./components/Posts/MyPosts/MyPosts"
 import Nav from "./components/Nav/Nav";
 import SecondNav from "./components/Nav/SecondaryNav/SecondaryNav";
 import SideDrawer from './components/Nav/SideDrawer/SideDrawer';
@@ -18,7 +18,9 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import MakeAPost from "./components/Posts/MakeAPost/MakeAPost";
 import Footer from "./components/Footer/Footer";
-import ActivePost from "./components/Posts/ActivePost/ActivePost"
+import PreviewPost from "./components/Posts/PreviewPost/PreviewPost"
+import CommentSharePost from "./components/Posts/CommentSharePost/CommentSharePost";
+import EditPost from "./components/Posts/EditPost/EditPost";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -57,10 +59,12 @@ function App() {
             {/* <Route exact path="/books" component={Books} />
             <Route exact path="/books/:id" component={Detail} />
             <Route component={NoMatch} /> */}
-
+            <Route exact path="/post/:id" component={CommentSharePost} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/makePost" component={MakeAPost} />
-            <Route exact path="/preview" component={ActivePost} />
+            <PrivateRoute exact path="/myPosts" component={MyPosts} />
+            <PrivateRoute exact path="/editPost" component={EditPost} />
+            <PrivateRoute exact path="/preview" component={PreviewPost} />
           </Switch>
 
             

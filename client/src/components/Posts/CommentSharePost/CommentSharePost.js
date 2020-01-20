@@ -1,53 +1,78 @@
 import React, {Component} from 'react';
-import classes from './ActiveMainPost.module.css';
+import classes from './CommentSharePost.module.css';
 import { withRouter } from 'react-router-dom';
 // import ActivePostText from "./ActivePostText/ActivePostText";
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import axios from 'axios';
+import Nav from '../../Nav/Nav';
+import SecondaryNav from '../../Nav/SecondaryNav/SecondaryNav';
+import Footer from  '../../Footer/Footer';
+import {likePost} from '../../../actions/readActions'
 var FontAwesome = require('react-fontawesome');
 
 
 
-class ActiveMainPost extends Component {
+class CommentSharePost extends Component {
 
+// state= {
+//   category: '',
+//   title: '',
+//   author: '',
+//   date: '',
+//   image: '',
+//   body: [],
+//   likes: '',
+//   dislikes: '',
+//   comments: ''
+// }
+
+// likeThisPost() {
+//   console.log
+//   this.props.dispatchLiked(this.props.readPost.id)
+// }
 render() {
   return(
+    <div >
+      <Nav/>
+      <SecondaryNav/>
+    <div className={classes.container}>
     <div className={classes.activeMainPostCard}>
-    <div className={classes.titleStyles}><h4 className={classes.headerStyles}>{this.props.title}</h4></div>
+    <div className={classes.titleStyles}><h4 className={classes.headerStyles}>{this.props.readPost.title}</h4></div>
     <div className={classes.articleTitleFooter}>
-    <div className={classes.author}> by- {this.props.author}</div>
+    <div className={classes.author}> by- {this.props.readPost.author}</div>
     <div className={classes.publishedDate}>
         Published On: 
 
         <Moment format="D MMM YYYY" withTitle>
-                {this.props.date}
+                {this.props.readPost.date}
         </Moment>
     </div>
     </div>
     <div style={{
-      backgroundImage: 'url("' + this.props.image + '")',
+      backgroundImage: 'url("' + this.props.readPost.image + '")',
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       height: '400px'
     }}>
     </div>
-    {/* <div className={classes.imageFooter}>
+    <div className={classes.imageFooter}>
     <div className={classes.imageFotterLeft}>
     <FontAwesome
-        className={classes.socialMediaLink}
+        className={classes.rate}
         name="thumbs-up"
         size="2x"
+        onClick={()=>this.props.dispatchLiked(this.props.readPost.id)}
         // spin
-        style={{ color: 'gray' }}
-    /> <span className={classes.likes}>{this.props.likes}</span>
+      
+    /> <span className={classes.likes}>{this.props.readPost.likes}</span>
     <FontAwesome
-        className={classes.socialMediaLink}
+        className={classes.rate}
         name="thumbs-down"
         size="2x"
         // spin
-        style={{ color: 'gray' }}
-    />  <span className={classes.dislikes}>{this.props.dislikes}</span>
+  
+    />  <span className={classes.dislikes}>{this.props.readPost.dislikes}</span>
     </div>
     <div className={classes.imageFotterRight}>
     <a href="" className={classes.facebookLink}>
@@ -56,37 +81,37 @@ render() {
         name="facebook"
         size="1x"
         // spin
-        style={{ color: 'white' }}
+
     /> 
     </a>
     <a href="" className={classes.twitterLink}>
     <FontAwesome
-       
+       className={classes.twitterShareLink}
         name="twitter"
         size="1x"
         // spin
-        style={{ color: 'white' }}
+
     /> 
     </a>
     <a href="" className={classes.linkedInLink}>
     <FontAwesome
-       
+       className={classes.linkedInShareLink}
         name="linkedin"
         size="1x"
         // spin
-        style={{ color: 'white' }}
+
     /> 
     </a>
     </div>
-    </div> */}
+    </div>
     <div className={classes.postText}>
     {console.log('******************************',this.props.body)}
-        {this.props.body.map((el, index)=> {
+        {this.props.readPost.body.map((el, index)=> {
             if(el.type === 'textArea') {
                 return(
                     <div className={classes.TextAreaDiv}>
                         <p className={classes.TextAreaParagraph}>
-                        {this.props.body[index].value}
+                        {this.props.readPost.body[index].value}
                         </p>
                         <br/>
                         <br/>
@@ -96,7 +121,7 @@ render() {
                 return(
                     <div className={classes.headerDiv}>
                         <h4 className={classes.header}>
-                            {this.props.body[index].value}
+                            {this.props.readPost.body[index].value}
                         </h4>
                         <br/>
                         <br/>
@@ -105,7 +130,7 @@ render() {
             } else if (el.type === 'image') {
                 return(
                     <div className={classes.imageDiv}>
-                         <img src={this.props.body[index].value} alt="" className={classes.image}/>
+                         <img src={this.props.readPost.body[index].value} alt="" className={classes.image}/>
                          <br/>
                          <br/>
                     </div>
@@ -114,20 +139,35 @@ render() {
 
         })}
     </div>
-  
     </div>
+   
+    </div>
+    <div className={classes.commentBox}>hello</div>
+    <Footer/>
+    </div>
+
   )
 }
 
 
  
 }
+const mapDispatchToProps = dispatch => {
 
+  return {
+    dispatchLiked: (id) => {
+      console.log('dispatch like fired')
+      dispatch(
+        likePost(id)
+      )
+    }
+  }
+}
 
 const mapStateToProps = state => ({
-    makePost: state.makePost,
+    readPost: state.readPost,
     auth: state.auth
   });
   
 
-export default connect( mapStateToProps, null )(withRouter(ActiveMainPost));
+export default connect( mapStateToProps, mapDispatchToProps )(withRouter(CommentSharePost));

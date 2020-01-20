@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './ActivePost.module.css';
+import classes from './PreviewPost.module.css';
 import { withRouter } from 'react-router-dom'
 import ActivePostText from "./ActivePostText/ActivePostText";
 import { connect } from 'react-redux';
@@ -8,30 +8,30 @@ var FontAwesome = require('react-fontawesome');
 
 
 
-const ActivePost = (props) => {
-  const imageStyles={
-    backgroundImage: 'url("' + props.makePost.img + '")',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    height: '400px'
-  }
+const PreviewPost = (props) => {
+//   const imageStyles=
 
   const date = new Date(Date.now()).toString();
 
   return(
     <div className={classes.activePostCard}>
-    <div className={classes.titleStyles}><h4 className={classes.headerStyles}>{props.makePost.title}</h4></div>
+    <div className={classes.titleStyles}><h4 className={classes.headerStyles}>{props.title}</h4></div>
     <div className={classes.articleTitleFooter}>
-    <div className={classes.author}> by- {props.auth.user.name}</div>
+    <div className={classes.author}> by- {props.author}</div>
     <div className={classes.publishedDate}>
-        Published On: 
+        {/* Published On: 
 
         <Moment format="D MMM YYYY" withTitle>
                 {date}
-        </Moment>
+        </Moment> */}
     </div>
     </div>
-    <div style={imageStyles}>
+    <div style={{
+    backgroundImage: 'url("' + props.image + '")',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    height: '400px'
+  }}>
     </div>
     <div className={classes.imageFooter}>
     <div className={classes.imageFotterLeft}>
@@ -51,7 +51,7 @@ const ActivePost = (props) => {
     />  <span className={classes.dislikes}>{props.dislikes}</span>
     </div>
     <div className={classes.imageFotterRight}>
-    <a href="" className={classes.facebookLink}>
+    <div href="" className={classes.facebookLink}>
     <FontAwesome
         className={classes.facebookShareLink}
         name="facebook"
@@ -59,8 +59,8 @@ const ActivePost = (props) => {
         // spin
         style={{ color: 'white' }}
     /> 
-    </a>
-    <a href="" className={classes.twitterLink}>
+    </div>
+    <div href="" className={classes.twitterLink}>
     <FontAwesome
        
         name="twitter"
@@ -68,8 +68,8 @@ const ActivePost = (props) => {
         // spin
         style={{ color: 'white' }}
     /> 
-    </a>
-    <a href="" className={classes.linkedInLink}>
+    </div>
+    <div href="" className={classes.linkedInLink}>
     <FontAwesome
        
         name="linkedin"
@@ -77,16 +77,16 @@ const ActivePost = (props) => {
         // spin
         style={{ color: 'white' }}
     /> 
-    </a>
+    </div>
     </div>
     </div>
     <div className={classes.postText}>
-        {props.makePost.bodyArr.map((el, index)=> {
+        {props.body.map((el, index)=> {
             if(el.type === 'textArea') {
                 return(
                     <div className={classes.TextAreaDiv}>
                         <p className={classes.TextAreaParagraph}>
-                        {props.makePost.bodyArr[index].value}
+                        {props.body[index].value}
                         </p>
                         <br/>
                         <br/>
@@ -96,7 +96,7 @@ const ActivePost = (props) => {
                 return(
                     <div className={classes.headerDiv}>
                         <h4 className={classes.header}>
-                            {props.makePost.bodyArr[index].value}
+                            {props.body[index].value}
                         </h4>
                         <br/>
                         <br/>
@@ -105,7 +105,7 @@ const ActivePost = (props) => {
             } else if (el.type === 'image') {
                 return(
                     <div className={classes.imageDiv}>
-                         <img src={props.makePost.bodyArr[index].value} alt="" className={classes.image}/>
+                         <img src={props.body[index].value} alt="" className={classes.image}/>
                          <br/>
                          <br/>
                     </div>
@@ -121,9 +121,9 @@ const ActivePost = (props) => {
 
 
 const mapStateToProps = state => ({
-    makePost: state.makePost,
+    editPost: state.editPost,
     auth: state.auth
   });
   
 
-export default connect( mapStateToProps, null )(withRouter(ActivePost));
+export default connect( mapStateToProps, null )(withRouter(PreviewPost));

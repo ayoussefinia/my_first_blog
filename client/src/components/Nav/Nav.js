@@ -24,7 +24,7 @@ function Nav(props) {
 
       <div className= {classes.navbar}>
       <div className={classes.navUserName}>
-        Welcome Back: <span className={classes.firstName}>John</span>
+        Welcome Back: <span className={classes.firstName}>{props.auth.user.name}</span>
       </div>
       {/* <div className={classes.titleone}>Abducted in</div>
       <div className={classes.titletwo}>Plain Sight</div> */}

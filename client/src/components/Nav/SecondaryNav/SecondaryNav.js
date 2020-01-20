@@ -19,7 +19,7 @@ const SecondaryNav = () => {
         </li>
 
         <li className={classes.NavListitem}>
-            <NavLink to="/" className={classes.NavigationLink}>
+            <NavLink to="/myPosts" className={classes.NavigationLink}>
                 My Posts
             </NavLink>
         </li>

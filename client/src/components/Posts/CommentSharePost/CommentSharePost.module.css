@@ -1,0 +1,179 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.rate {
+  color: white;
+}
+
+.rate:hover {
+  cursor: pointer;
+  color: gray;
+}
+
+.activeMainPostCard {
+  margin-top: 5rem;
+  width: 75%;
+
+  box-shadow: .8px 1px 3px rgb(104, 103, 103);
+  color: white;
+}
+
+
+
+
+
+.titleStyles {
+  /* height: 70px; */
+  padding: 10px 10px;
+  font-weight: bold;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-start; */
+}
+
+.headerStyles {
+  margin: 0;
+}
+
+.articleTitleFooter {
+  display: flex;
+  height: 30px;
+  align-items: flex-end;
+}
+
+.author {
+  width: 50%;
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: gray;
+  font-size: 1rem;
+  margin-left: 15px;
+  padding-bottom: 10px;
+}
+
+.publishedDate {
+  width: 50%;
+  height: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: gray;
+  font-size: .8rem;
+  margin-right: 10px;
+  padding-bottom: 2px;
+}
+.imageFooter {
+  height: 30px;
+  display: flex;
+
+}
+
+.imageFotterLeft {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+.imageFotterRight {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.likes {
+  margin-left: 5px;
+  margin-right: 20px;
+}
+
+.dislikes {
+  margin-left: 5px;
+}
+
+.facebookLink {
+  background: rgb(66,103,178);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  margin-right: 5px;
+}
+.facebookLink:hover {
+  color: gray;
+  text-decoration: none;
+}
+/* .facebookShareLink:hover {
+  color: gray;
+  text-decoration: none;
+} */
+
+.linkedInLink {
+  background: rgb(0,151,177);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+}
+
+.linkedInLink:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+.twitterLink {
+  background: rgb(53,147,207);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  margin-right: 5px;
+}
+.twitterLink:hover {
+  color: gray;
+  text-decoration: none;
+}
+/* .twitterShareLink:hover {
+  color: gray;
+  text-decoration: none;
+} */
+
+
+.shareLinksText {
+  margin-left: 5px;
+}
+
+.postText {
+  margin-top: 3rem;
+  padding: 0 15px;
+  line-height: 1.75rem;
+  font-weight: 300;
+  font-size: 1.25rem;
+}
+
+.commentBox {
+  border: 1px solid black; 
+  width: 75vw;
+  padding: 0 3vw;
+  margin: auto;
+  /* height: 10rem; */
+  margin-bottom: 50px;
+  margin-bottom: 10rem;
+}

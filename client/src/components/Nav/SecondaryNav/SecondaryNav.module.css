@@ -32,6 +32,13 @@
   box-shadow: .19px 0px 0px white;
   padding: 0 25px; 
 }
+
+.NavigationLink:hover {
+
+  text-decoration: none;
+}
+
+
 .NavListitem {
   list-style-type: none;
 }

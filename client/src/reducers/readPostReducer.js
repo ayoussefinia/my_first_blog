@@ -18,6 +18,7 @@ const initialState = {
   likes: '',
   dislikes: '',
   comments: '',
+  id: ''
 }
 
 export default function(state = initialState, action) {
@@ -38,7 +39,8 @@ export default function(state = initialState, action) {
         body: newBody,
         likes: action.payload.likes,
         dislikes: action.payload.dislikes,
-        comments: action.payload.comments
+        comments: action.payload.comments,
+        id: action.payload._id
       }
 
       case INITIALIZE_MAIN_ARTICLE: 
@@ -59,7 +61,8 @@ export default function(state = initialState, action) {
         body: updateBody,
         likes: action.payload.likes,
         dislikes: action.payload.dislikes,
-        comments: action.payload.comments
+        comments: action.payload.comments,
+        id: action.payload._id
       }
     default:
       return state;
