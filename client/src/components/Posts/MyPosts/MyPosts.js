@@ -7,7 +7,8 @@ import axios from 'axios';
 import Nav from '../../Nav/Nav';
 import SecondaryNav from '../../Nav/SecondaryNav/SecondaryNav';
 import Footer from  '../../Footer/Footer';
-import {likePost} from '../../../actions/readActions'
+import {likePost} from '../../../actions/readActions';
+import DeletePost from '../../Modals/DeletePost/DeletePost';
 var FontAwesome = require('react-fontawesome');
 
 
@@ -16,12 +17,13 @@ class MyPosts extends Component {
 
   state={
     posts:[],
-    editPostClicked: false
+    editPostClicked: false,
+    toggleDeleteModal: false,
+    deletePostId: ''
   }
 
 componentDidMount() {
   axios.get("api/posts/byUser/"+ this.props.auth.user.id).then(response => {
-    console.log(response.data);
     this.setState({posts: response.data})
   })
 }
@@ -30,11 +32,28 @@ EditPost(post){
   this.props.redirectEditPost(post);
   this.setState({editPostClicked: true});
 }
+
 checkEditingMode(){
   if(this.props.editPost.editingMode && this.state.editPostClicked) {
     this.props.history.push("/editPost")
   }
 }
+
+toggleDeleteModal(postId) {
+  this.setState({toggleDeleteModal: !this.state.toggleDeleteModal, deletePostId: postId})
+  window.scrollTo(0,0);
+}
+
+deletePost(id) {
+  axios.delete('/api/posts/'  + id).then(response => {
+    console.log('post deleted', response.data);
+    axios.get("api/posts/byUser/"+ this.props.auth.user.id).then(response => {
+      console.log('inside get posts after delete', this);
+      this.setState({posts: response.data, toggleDeleteModal: false})
+    })
+  }).catch(err => console.log('Error deletePost MyPosts', err))
+}
+
 render() {
   return(
   
@@ -42,6 +61,11 @@ render() {
       {this.checkEditingMode()}
       <Nav/>
       <SecondaryNav/>
+      {this.state.toggleDeleteModal? 
+        <DeletePost 
+          clicked={()=>this.toggleDeleteModal()}
+          delete={()=>this.deletePost(this.state.deletePostId)}
+        /> : null}
       <div className={classes.container}>
  
         {this.state.posts.map((post, index)=> {
@@ -87,7 +111,10 @@ render() {
             // spin
           />
           </div>
-          <div className={classes.deleteLink}>
+          <div 
+            className={classes.deleteLink}
+            onClick={() => this.toggleDeleteModal(post._id)}
+          >
           <FontAwesome
             
             name="trash"

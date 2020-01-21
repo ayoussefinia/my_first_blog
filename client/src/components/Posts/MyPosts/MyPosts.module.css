@@ -93,3 +93,30 @@
 .action {
   margin: 3px;;
 }
+
+@media(max-width: 460px) {
+  .container {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    color: white;
+    /* min-height: 55vh; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+   
+    /* grid-template-columns: 25% 25% 25%;
+    grid-column-gap: 10px;
+    grid-template-rows: 60vh 60vh 60vh 60vh; */
+    grid-row-gap: 10px;
+    justify-content: center;
+  }
+  .postDiv {
+
+    height: 80vh;
+    margin-bottom: 2rem;
+    border: none;
+  }
+
+
+
+}

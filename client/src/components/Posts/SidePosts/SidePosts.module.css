@@ -10,9 +10,19 @@
   color: white;
   box-shadow: .8px 1px 3px rgb(104, 103, 103);
   border-radius: 5px;
-  margin-bottom: .75rem;
+
   overflow: hidden;
 }
+.category {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-top: .75rem;
+  margin-bottom: .25rem;
+}
+
 .sidePostListItem:hover {
   box-shadow: 3px 2px 8px rgb(104, 103, 103);
   cursor: pointer;

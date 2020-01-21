@@ -3,7 +3,7 @@ import classes from './EditPost.module.css';
 import { connect } from "react-redux";
 import {withRouter, Redirect} from 'react-router-dom';
 import  PreviewModal  from '../../Modals/PreviewModal/PreviewModal';
-import PostModal from '../../Modals/PostModal/PostModal';
+import SubmitChanges from '../../Modals/SubmitChanges/SubmitChanges';
 import PreviewPost from '../PreviewPost/PreviewPost';
 import {publishPost} from '../../../actions/authActions';
 import Nav from '../../Nav/Nav';
@@ -80,7 +80,7 @@ onImgLoad = ({target:img}) => {
         </PreviewModal> 
       : null}
       {this.props.editPost.modalOpen? 
-        <PostModal
+        <SubmitChanges
           clicked={this.props.toggleMakePostModal} 
           post = {this.postArticle}
         />  
@@ -287,13 +287,13 @@ onImgLoad = ({target:img}) => {
             onClick={this.togglePreviewModal}
           >
             
-            Preview
+            Preview Changes
           </button>
           <button 
             className={classes.postButton}
             onClick={this.toggleMakePostModal}
           >
-            Post
+            Submit Changes
           </button>
         </div>
     </div>

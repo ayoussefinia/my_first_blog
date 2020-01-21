@@ -265,11 +265,11 @@
   border-radius: 5px;
   color: white;
   font-weight: 400;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   background: rgb(53, 28, 114);
-  margin-right:  10px;
+  margin-right:  40px;
   border: none;
-  width: 7rem;
+  width: 14rem;
   height: 3rem;
 }
 
@@ -277,11 +277,11 @@
   border-radius: 5px;
   color: white;
   font-weight: 400;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   background: black;
-  margin-right:  10px;
+  margin-left:  40px;
   border: none;
-  width: 7rem;
+  width: 14rem;
   height: 3rem;
 }
 .postButton:hover {

@@ -1,11 +1,15 @@
 const db = require("../models");
+const moment = require('moment');
+const sixtyDaysAgo = moment().subtract(60, 'days').startOf('day')
 
-// Defining methods for the booksController
+
 module.exports = {
   findAll: function(req, res) {
     db.Post
-      .find(req.query)
-      .sort({ date: -1 })
+      .find( {date: 
+        {$gte: sixtyDaysAgo}
+       })
+      .sort({ category: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -16,7 +20,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log('**************create fired', req.body);
+  
     
     db.Post
       .create(req.body)

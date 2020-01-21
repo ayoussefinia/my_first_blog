@@ -38,6 +38,13 @@ console.log('RESPonse Posts', response.data)
       this.state.sidePostsArr.map(
         (post, index) => { 
           return (
+        <div >
+        <div className={styles.category}>
+        { index=== 0 || (index>0 && this.state.sidePostsArr[index].category !== this.state.sidePostsArr[index-1].category) ?  
+         this.state.sidePostsArr[index].category 
+          : null}
+        </div>
+
         <div 
           className={styles.sidePostListItem}
           key={post._id}
@@ -77,6 +84,8 @@ console.log('RESPonse Posts', response.data)
           {post.title.substring(0, 55)+ '...'}
         </div>
       </div>
+        </div>
+       
           )
         }
       )

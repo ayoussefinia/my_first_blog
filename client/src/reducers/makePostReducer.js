@@ -112,7 +112,7 @@ export default function(state = initialState, action) {
   };
 
   case 'UPDATE_INPUT_TEXT' :
-  console.log('set image reducer fired', action.payload, action.index);
+
 
   const nextArr = [...state.bodyArr];
   for(let i=0; i<state.bodyArr.length -1; i++) {

@@ -10,6 +10,7 @@ import Nav from '../../Nav/Nav';
 import SecondaryNav from '../../Nav/SecondaryNav/SecondaryNav';
 import Footer from '../../Footer/Footer';
 import SideDrawer from '../../Nav/SideDrawer/SideDrawer';
+// import { createBrowserHistory } from 'history';
 var FontAwesome = require('react-fontawesome');
 
 let imageStyles;
@@ -36,7 +37,8 @@ toggleMakePostModal= () => {
   window.scrollTo(0,0);
 }
 postArticle = () => {
-  this.props.publishPostToDatabase(this.props.makePost, this.props.auth)
+
+  this.props.publishPostToDatabase(this.props.makePost, this.props.auth, this.props.history)
  
 }
 
@@ -70,11 +72,12 @@ onImgLoad = ({target:img}) => {
            
         >  
           <PreviewPost
-            category={this.props.editPost.category}
-            title={this.props.editPost.title}
-            image={this.props.editPost.image}
-            body={this.props.editPost.bodyArr}
+            category={this.props.makePost.category}
+            title={this.props.makePost.title}
+            image={this.props.makePost.img}
+            body={this.props.makePost.bodyArr}
             author={this.props.auth.user.name}
+            mode='make'
           />
         </PreviewModal> 
       : null}
@@ -354,9 +357,9 @@ const mapDispactchToProps = dispatch => {
             }
       )  
     }, 
-    publishPostToDatabase : (postState, authState) => {
+    publishPostToDatabase : (postState, authState, history) => {
       dispatch(
-        publishPost(postState, authState)
+        publishPost(postState, authState, history)
       )
     },
     toggleMakePostModal : () => {

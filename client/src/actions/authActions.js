@@ -1,6 +1,10 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+// import { createBrowserHistory } from 'history';
+
+
+
 import {
   GET_ERRORS,
   SET_CURRENT_USER,
@@ -90,8 +94,8 @@ export const handlePublishError = () => dispatch =>  {
   }
 }
 
-export const publishPost = (postState, authState) => dispatch => {
-  console.log('publish post called');
+export const publishPost = (postState, authState, history) => dispatch => {
+  
   const postObject = {
     category: postState.category,
     title: postState.title,
@@ -107,6 +111,16 @@ export const publishPost = (postState, authState) => dispatch => {
   axios.post('/api/posts', postObject).then(response => {
     console.log(response.data)
     dispatch(resetState());
+    const location = history.location;
+
+    // Listen for changes to the current location.
+    const unlisten = history.listen((location) => {
+      // location is an object like window.location
+      console.log('pathname:::', location.pathname);
+    });
+
+    history.push('/');
+    // window.location.reload();
     // return response;
 
   }).catch(err => {

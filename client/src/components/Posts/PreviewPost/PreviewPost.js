@@ -19,11 +19,15 @@ const PreviewPost = (props) => {
     <div className={classes.articleTitleFooter}>
     <div className={classes.author}> by- {props.author}</div>
     <div className={classes.publishedDate}>
-        {/* Published On: 
+       {props.mode === 'make' ? 'Published On:' : 'Last Edited:' } 
 
-        <Moment format="D MMM YYYY" withTitle>
+        <Moment 
+            format="D MMM YYYY" 
+            withTitle
+            className={classes.previewDate}
+        >
                 {date}
-        </Moment> */}
+        </Moment>
     </div>
     </div>
     <div style={{
