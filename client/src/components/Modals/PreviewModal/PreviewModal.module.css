@@ -69,3 +69,14 @@
 .backButton {
   color: inherit;
 }
+
+@media(max-width: 660px) {
+  .modalDiv {
+
+    width: 85%;
+    /* height: 100%; */
+
+  
+  }
+  
+}

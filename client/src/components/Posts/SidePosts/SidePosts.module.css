@@ -50,3 +50,21 @@
 .iconData {
   margin-left: 5px;
 }
+
+.mobileScreenArticle {
+  display: none;
+}
+
+@media(max-width: 660px) {
+  .mobileScreenArticle {
+    display: block;
+    box-shadow: .8px 1px 3px rgb(104, 103, 103);
+    border-radius: 5px;
+    margin-top: 1rem;
+  }
+  .mobileScreenArticle:hover {
+    box-shadow: 3px 2px 8px rgb(104, 103, 103);
+    cursor: pointer;
+
+  }
+}

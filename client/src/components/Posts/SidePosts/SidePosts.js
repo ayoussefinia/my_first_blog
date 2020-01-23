@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {withRouter, Redirect} from "react-router-dom";
 import {updateMainArticle} from '../../../actions/readActions';
 import styles from "./SidePosts.module.css";
 import axios from 'axios';
+import CommentSharePost from "../CommentSharePost/CommentSharePost";
+import PreviewPost from '../PreviewPost/PreviewPost';
 var FontAwesome = require('react-fontawesome');
+
 
 class SidePosts extends Component {
   state = {
@@ -14,28 +18,49 @@ class SidePosts extends Component {
         comments: '',
         title: ''
       }
-    ]
+    ],
+    showHideDivArr: [
+
+    ],
+    mainArticleClicked: false
   }
 componentDidMount() {
 
 axios.get('/api/posts').then(response => {
 console.log('RESPonse Posts', response.data)
-  this.setState({sidePostsArr: response.data})
+const mobileDivArray = response.data.map((el) => false);
+  this.setState({sidePostsArr: response.data, showHideDivArr: mobileDivArray})
 })
 }
 
-// clicked(event) {
-//   console.log(event.target);
-// }
+changeMainArticle(index) {
+  this.props.setMainArticle(this.state.sidePostsArr[index]._id);
+  const mobileDivArrayCopy=[...this.state.showHideDivArr];
+  mobileDivArrayCopy[index] = !mobileDivArrayCopy[index];
+  this.setState({showHideDivArr: mobileDivArrayCopy})
+}
+setRedirect() {
+
+  this.setState({mainArticleClicked: true});
+}
+renderRedirectToCommentShare(){
+  if (this.state.mainArticleClicked) {
+    return <Redirect to={'/post/'+ this.props.readPost.id}/>
+  }
+}
 
 
 
 
   render() {
-    console.log('*************', this.state.sidePostsArr)
+
+  
+    // console.log('*************', this.state.sidePostsArr)
     return(
-      
-      this.state.sidePostsArr.map(
+    
+     <div>
+      {this.renderRedirectToCommentShare()}
+     {this.state.sidePostsArr.map(
         (post, index) => { 
           return (
         <div >
@@ -48,7 +73,8 @@ console.log('RESPonse Posts', response.data)
         <div 
           className={styles.sidePostListItem}
           key={post._id}
-          onClick={() => this.props.setMainArticle(this.state.sidePostsArr[index]._id)}
+          // onClick={() => this.props.setMainArticle(this.state.sidePostsArr[index]._id)}
+          onClick={() => this.changeMainArticle(index)}
         >
         <div className={styles.sidePostIcons}>
           <div className={styles.sidePostIcon}>
@@ -84,12 +110,31 @@ console.log('RESPonse Posts', response.data)
           {post.title.substring(0, 55)+ '...'}
         </div>
       </div>
+      <div 
+        className={styles.mobileScreenArticle}
+        onClick={this.setRedirect.bind(this)}
+        >
+      {this.state.showHideDivArr[index]? 
+        <PreviewPost
+            category={this.props.readPost.category}
+            title={this.props.readPost.title}
+            image={this.props.readPost.image}
+            body={this.props.readPost.body}
+            author={this.props.auth.user.name}
+            mode='make'
+        /> : null}
+      </div>
         </div>
        
           )
         }
-      )
+      )}
       
+       
+     </div>
+
+     
+
     )
   }
 
@@ -107,4 +152,4 @@ const mapDispactchToProps = dispatch => {
     auth: state.auth
   });
   
-  export default connect( mapStateToProps, mapDispactchToProps )(SidePosts);
+  export default connect( mapStateToProps, mapDispactchToProps )(withRouter(SidePosts));

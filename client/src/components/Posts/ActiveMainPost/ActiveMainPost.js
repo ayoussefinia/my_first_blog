@@ -29,7 +29,7 @@ render() {
       backgroundImage: 'url("' + this.props.image + '")',
       backgroundPosition: 'center',
       backgroundSize: 'cover',
-      height: '400px'
+      height: window.innerWidth*(.65)*(2/3)*.75
     }}>
     </div>
     {/* <div className={classes.imageFooter}>

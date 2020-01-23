@@ -13,6 +13,9 @@ function Nav(props) {
     props.logoutUser();
     // window.logcation.href();
   }
+
+  let user = <div><span className={classes.welcome}>Welcome Back:</span><span className={classes.firstName}>{props.auth.user.name}</span></div>
+
   return (
     // <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
     //   <a className="navbar-brand" href="/">
@@ -24,11 +27,11 @@ function Nav(props) {
 
       <div className= {classes.navbar}>
       <div className={classes.navUserName}>
-      <span className={classes.welcome}>Welcome Back:</span>
-         <span className={classes.firstName}>{props.auth.user.name}</span>
+   { props.auth.isAuthenticated ? 
+      user : null}
+      
       </div>
-      {/* <div className={classes.titleone}>Abducted in</div>
-      <div className={classes.titletwo}>Plain Sight</div> */}
+
       <div className={classes.spinnerContainer}>
         <div className={classes.navlinkspinner}>
           <div className={classes.link1}></div>

@@ -34,7 +34,7 @@ const PreviewPost = (props) => {
     backgroundImage: 'url("' + props.image + '")',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    height: '400px'
+    height: window.innerWidth<660? window.innerWidth*(2/3) : window.innerWidth*(.6)*(2/3)
   }}>
     </div>
     <div className={classes.imageFooter}>
@@ -109,7 +109,7 @@ const PreviewPost = (props) => {
             } else if (el.type === 'image') {
                 return(
                     <div className={classes.imageDiv}>
-                         <img src={props.body[index].value} alt="" className={classes.image}/>
+                         <img src={props.body[index].value} alt="" className={classes.image} style={{maxWidth: '100%'}}/>
                          <br/>
                          <br/>
                     </div>

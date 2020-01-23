@@ -3,7 +3,7 @@ body {
 }
 
 .bodyContainer{
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +19,7 @@ body {
   
   /* border: 1.5px solid black; */
   border-radius: 5px;
-  display: flex;
+  /* display: flex; */
   display: block;
   /* height: auto; */
   padding: 5vh 1vw 5vw 3vw;
@@ -59,10 +59,42 @@ body {
   height: 100%;
 }
 
+
+
 @media(max-width: 950px) {
+
   .contentContainer {
 
     width: 95vw;
   
+  }
+}
+
+@media(max-width: 660px) {
+  .bodyContainer {
+    width:100%;
+    display: block;
+    
+  }
+
+  .contentContainer{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 90vw;
+    padding: 0;
+  
+  }
+
+  .activeArticleContainer{
+    display: none;
+    width: 0;
+  }
+
+  .rightSideArticleListContainer {
+    display: flex;
+    justify-content: center;
+   width: 100%;
+   padding: 10px;
   }
 }

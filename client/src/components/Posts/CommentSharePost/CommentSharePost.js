@@ -49,11 +49,12 @@ render() {
         </Moment>
     </div>
     </div>
+
     <div style={{
       backgroundImage: 'url("' + this.props.readPost.image + '")',
       backgroundPosition: 'center',
       backgroundSize: 'cover',
-      height: '400px'
+      height: window.innerWidth < 660? window.innerWidth*(2/3) : window.innerWidth*(.75)*(2/3)
     }}>
     </div>
     <div className={classes.imageFooter}>
