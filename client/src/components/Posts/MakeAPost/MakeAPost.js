@@ -23,7 +23,7 @@ state ={
 
 
 componentDidMount(){
-  console.log(this.props.auth.user);
+  // console.log(this.props.auth.user);
 }
 
 togglePreviewModal= () => {
@@ -50,7 +50,7 @@ postArticle = () => {
 
 //resize images that are too big
 onImgLoad = ({target:img}) => {
-  console.log(img.offsetWidth, img.offsetHeight, window.innerWidth);
+  // console.log(img.offsetWidth, img.offsetHeight, window.innerWidth);
   if(img.offsetWidth >= window.innerWidth) {
     const aspectRatio = img.offsetWidth/img.offsetHeight;
     const newImageWidth = window.innerWidth * .75;
@@ -104,7 +104,7 @@ onImgLoad = ({target:img}) => {
       <input 
             type="text" 
             className={classes.articleTitleInput} 
-            placeholder="type title here"
+            placeholder="whats your title?"
             onChange= {this.props.twoWayBindPostTitle}
             value =  {this.props.makePost.title}
             />
@@ -114,12 +114,13 @@ onImgLoad = ({target:img}) => {
       <div className={classes.publishedDate}>Published On: {this.props.date}</div>
       </div>
       <div 
+       
           style={
               {
                 backgroundImage: 'url("' + this.props.makePost.img + '")',
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
-                height: '400px',
+                height: window.innerWidth<460? window.innerWidth*(2/3) : window.innerWidth*(.6)*(2/3),
                 opacity: '.75'
               }
             }>
@@ -184,9 +185,10 @@ onImgLoad = ({target:img}) => {
 
       </div> */}
       {this.props.makePost.bodyArr.map((el, index) => {
+        
           if(el.type == 'textArea') {
             return(
-              <div   key={index}>
+              <div   key={index} >
                 <div className={classes.textAreaDiv}>
                   <textarea 
                     className={classes.textAreaInput}             

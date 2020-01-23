@@ -117,7 +117,7 @@ onImgLoad = ({target:img}) => {
                 backgroundImage: 'url("' + this.props.editPost.img + '")',
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
-                height: '400px',
+                height: window.innerWidth<460? window.innerWidth*(2/3) : window.innerWidth*(.6)*(2/3),
                 opacity: '.75'
               }
             }>

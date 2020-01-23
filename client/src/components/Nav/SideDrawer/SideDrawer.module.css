@@ -81,3 +81,34 @@
  cursor: pointer;
  color: gray;
 }
+
+@media(max-width: 460px) {
+  /* .Closed {
+    transform: translateX(-100%);
+  } */
+
+  .SideDrawer {
+    height: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+   
+  }
+
+  .Closed {
+    transform: translateX(-80%);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .Open {
+    height: 100px;
+  
+  }
+
+.openSideDrawerIcons {
+  flex-direction: row;
+}
+}

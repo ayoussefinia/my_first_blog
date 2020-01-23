@@ -2,8 +2,9 @@
 
 .activePostCard {
   /* width: 95%; */
+  margin-bottom: rem;
   height: 100vh;
- display: block;
+  display: block;
 }
 
 .titleStyles {
@@ -144,11 +145,7 @@
   padding: 30px 0;
 }
 
-@media (min-width: 1000px) {
-  .container {
-    width: 60%;
-  }
-}
+
 /* .imageInputStyles {
   width: 10%;
   height: 50%;
@@ -173,6 +170,7 @@
   font-size: 2rem;
   border: none;
   box-shadow: -1px -1px 5px 0px white;
+  padding-left: 10px;
 }
 
 .textAreaInput {
@@ -341,3 +339,41 @@
 .categoryInput:focus {
   outline: 1px solid black;
 } */
+
+
+
+
+@media(max-width: 460px) {
+  
+.container {
+  width: 95%;
+}
+.articleTitleInput {
+  height: 40px;
+}
+
+.bodyContainer {
+  margin-top: 10rem;
+}
+.activePostCard {
+  /* width: 95%; */
+  height: 60vh;
+  margin-bottom: 5rem;
+}
+}
+
+@media (min-width: 800px) {
+
+  .activePostCard {
+    margin-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .container {
+    width: 60%;
+  }
+  .activePostCard {
+    margin-bottom: 8rem;
+  }
+}

@@ -58,3 +58,11 @@ body {
   width: 100%;
   height: 100%;
 }
+
+@media(max-width: 950px) {
+  .contentContainer {
+
+    width: 95vw;
+  
+  }
+}
