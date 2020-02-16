@@ -106,7 +106,7 @@ render() {
     </div>
     </div>
     <div className={classes.postText}>
-    {console.log('******************************',this.props.body)}
+
         {this.props.readPost.body.map((el, index)=> {
             if(el.type === 'textArea') {
                 return(
