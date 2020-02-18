@@ -4,14 +4,14 @@
 
 ### Guest Credentials: 
 
-##User Name: test@test.com
-##Pass: tester
+## User Name: test@test.com
+## Pass: tester
 
 #### App Description: 
 
 This is a MERN stack app that allows anyone to read posts, and authenticated users to create, edit and delete posts they have made. Posts can include paragraphs, titles and images in any order and can be as long as the user wants. 
 
-  ##Alien Head
+  ## Alien Head
 
   the alien head is just a bunch of css div transforms layered on top of eachoter
 
