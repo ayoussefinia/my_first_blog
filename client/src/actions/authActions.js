@@ -108,7 +108,9 @@ export const publishPost = (postState, authState, history) => dispatch => {
     comments: 0
   }
 
-  axios.post('/api/posts', postObject).then(response => {
+  const id = postState.id;
+
+  axios.post('/api/posts/'+id, postObject).then(response => {
     console.log(response.data)
     dispatch(resetState());
     const location = history.location;

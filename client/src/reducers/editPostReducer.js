@@ -15,6 +15,7 @@ const initialState  =
   title: '',
   category: '',
   img: 'https://via.placeholder.com/780x400?text=Choose+a+photo',
+  id: '',
   bodyArr: [
     {
       type: 'header',
@@ -157,7 +158,8 @@ export default function(state = initialState, action) {
     title: action.payload.title,
     category: action.payload.category,
     img: action.payload.image,
-    bodyArr: action.payload.body
+    bodyArr: action.payload.body,
+    id: action.payload._id
   }
     default:
       return state;
