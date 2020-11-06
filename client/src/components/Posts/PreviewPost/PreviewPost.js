@@ -59,7 +59,7 @@ const PreviewPost = (props) => {
     <FontAwesome
         className={classes.facebookShareLink}
         name="facebook"
-        size="1x"
+
         // spin
         style={{ color: 'white' }}
     /> 
@@ -68,7 +68,7 @@ const PreviewPost = (props) => {
     <FontAwesome
        
         name="twitter"
-        size="1x"
+    
         // spin
         style={{ color: 'white' }}
     /> 
@@ -77,7 +77,7 @@ const PreviewPost = (props) => {
     <FontAwesome
        
         name="linkedin"
-        size="1x"
+ 
         // spin
         style={{ color: 'white' }}
     /> 
@@ -88,7 +88,7 @@ const PreviewPost = (props) => {
         {props.body.map((el, index)=> {
             if(el.type === 'textArea') {
                 return(
-                    <div className={classes.TextAreaDiv}>
+                    <div className={classes.TextAreaDiv} key={index}>
                         <p className={classes.TextAreaParagraph}>
                         {props.body[index].value}
                         </p>
@@ -98,7 +98,7 @@ const PreviewPost = (props) => {
                 )
             } else if (el.type  === 'header') {
                 return(
-                    <div className={classes.headerDiv}>
+                    <div className={classes.headerDiv} key={index}>
                         <h4 className={classes.header}>
                             {props.body[index].value}
                         </h4>
@@ -108,7 +108,7 @@ const PreviewPost = (props) => {
                 )
             } else if (el.type === 'image') {
                 return(
-                    <div className={classes.imageDiv}>
+                    <div className={classes.imageDiv} key={index}>
                          <img src={props.body[index].value} alt="" className={classes.image} style={{maxWidth: '100%'}}/>
                          <br/>
                          <br/>

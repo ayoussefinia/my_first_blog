@@ -6,7 +6,7 @@ import {
 
 export const updateMainArticle = (id) => dispatch => {
   axios.get('api/posts/'+id).then(response => {
-    console.log('from readactions.js response', response.data);
+    // console.log('from readactions.js response', response.data);
     dispatch({
       type: 'SET_MAIN_ARTICLE',
       payload: response.data

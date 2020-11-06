@@ -80,11 +80,10 @@ render() {
     </div>
     </div> */}
     <div className={classes.postText}>
-    {console.log('******************************',this.props.body)}
         {this.props.body.map((el, index)=> {
             if(el.type === 'textArea') {
                 return(
-                    <div className={classes.TextAreaDiv}>
+                    <div className={classes.TextAreaDiv} key={index}>
                         <p className={classes.TextAreaParagraph}>
                         {this.props.body[index].value}
                         </p>
@@ -94,7 +93,7 @@ render() {
                 )
             } else if (el.type  === 'header') {
                 return(
-                    <div className={classes.headerDiv}>
+                    <div className={classes.headerDiv} key={index}>
                         <h4 className={classes.header}>
                             {this.props.body[index].value}
                         </h4>
@@ -104,7 +103,7 @@ render() {
                 )
             } else if (el.type === 'image') {
                 return(
-                    <div className={classes.imageDiv}>
+                    <div className={classes.imageDiv} key={index}>
                          <img src={this.props.body[index].value} alt="" className={classes.image}/>
                          <br/>
                          <br/>
