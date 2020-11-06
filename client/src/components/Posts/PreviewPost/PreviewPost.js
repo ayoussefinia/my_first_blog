@@ -7,9 +7,8 @@ import Moment from 'react-moment';
 var FontAwesome = require('react-fontawesome');
 
 
-
+// this is the component that shows the active main article on the landing page as well as the preview of a post on the MakeAPost page
 const PreviewPost = (props) => {
-//   const imageStyles=
 
   const date = new Date(Date.now()).toString();
 
@@ -20,7 +19,6 @@ const PreviewPost = (props) => {
     <div className={classes.author}> by- {props.author}</div>
     <div className={classes.publishedDate}>
        {props.mode === 'make' ? 'Published On:' : 'Last Edited:' } 
-
         <Moment 
             format="D MMM YYYY" 
             withTitle
@@ -34,7 +32,9 @@ const PreviewPost = (props) => {
     backgroundImage: 'url("' + props.image + '")',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    height: window.innerWidth<660? window.innerWidth*(2/3) : window.innerWidth*(.6)*(2/3)
+    height: window.innerWidth<660 ? 
+            window.innerWidth*(2/3) : 
+            window.innerWidth*(.6)*(2/3)
   }}>
     </div>
     <div className={classes.imageFooter}>
@@ -59,26 +59,18 @@ const PreviewPost = (props) => {
     <FontAwesome
         className={classes.facebookShareLink}
         name="facebook"
-
-        // spin
         style={{ color: 'white' }}
     /> 
     </div>
     <div href="" className={classes.twitterLink}>
-    <FontAwesome
-       
+    <FontAwesome       
         name="twitter"
-    
-        // spin
         style={{ color: 'white' }}
     /> 
     </div>
     <div href="" className={classes.linkedInLink}>
     <FontAwesome
-       
         name="linkedin"
- 
-        // spin
         style={{ color: 'white' }}
     /> 
     </div>
@@ -109,7 +101,10 @@ const PreviewPost = (props) => {
             } else if (el.type === 'image') {
                 return(
                     <div className={classes.imageDiv} key={index}>
-                         <img src={props.body[index].value} alt="" className={classes.image} style={{maxWidth: '100%'}}/>
+                         <img 
+                            src={props.body[index].value} 
+                            alt="" className={classes.image} 
+                            style={{maxWidth: '100%'}}/>
                          <br/>
                          <br/>
                     </div>
@@ -129,5 +124,4 @@ const mapStateToProps = state => ({
     auth: state.auth
   });
   
-
 export default connect( mapStateToProps, null )(withRouter(PreviewPost));

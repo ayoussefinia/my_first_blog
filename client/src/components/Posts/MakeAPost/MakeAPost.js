@@ -23,32 +23,27 @@ state ={
 
 
 componentDidMount(){
-  // console.log(this.props.auth.user);
+  // component uses redux 
 }
 
+// function used to display preview modal once the preview button at the bottom of the page is clicked
 togglePreviewModal= () => {
-this.setState({togglePreview: !this.state.togglePreview})
-window.scrollTo(0,0);
+  this.setState({togglePreview: !this.state.togglePreview})
+  window.scrollTo(0,0);
 }
 
+//function prompts a user with "are you sure" modal to publish post
 toggleMakePostModal= () => {
-  // this.setState({toggleMakePost: !this.state.toggleMakePost})
   this.props.toggleMakePostModal();
   window.scrollTo(0,0);
 }
-postArticle = () => {
 
+//after yes is clicked on the "are you sure" modal this function publishes post to the database
+postArticle = () => {
   this.props.publishPostToDatabase(this.props.makePost, this.props.auth, this.props.history)
- 
 }
 
-
-// inputStyle= {
-//   width: '50%',
-//   color: 'black'
-// }
-
-//resize images that are too big
+//resize images that are too big to fit parent container
 onImgLoad = ({target:img}) => {
   // console.log(img.offsetWidth, img.offsetHeight, window.innerWidth);
   if(img.offsetWidth >= window.innerWidth) {
@@ -59,18 +54,16 @@ onImgLoad = ({target:img}) => {
   }
 }
 
-
   render() {
     return(
       <div>
-      <Nav/>
-      <SecondaryNav/>
-      <SideDrawer/>
-       {this.state.togglePreview? 
-        <PreviewModal
-          clicked={this.togglePreviewModal}
-           
-        >  
+        <Nav/>
+        <SecondaryNav/>
+        <SideDrawer/>
+        {this.state.togglePreview? 
+          <PreviewModal
+            clicked={this.togglePreviewModal}
+          >  
           <PreviewPost
             category={this.props.makePost.category}
             title={this.props.makePost.title}
@@ -79,113 +72,102 @@ onImgLoad = ({target:img}) => {
             author={this.props.auth.user.name}
             mode='make'
           />
-        </PreviewModal> 
-      : null}
-      {this.props.makePost.modalOpen? 
-        <PostModal
-          clicked={this.props.toggleMakePostModal} 
-          post = {this.postArticle}
-        />  
-      : null}
-            <div className={classes.container}>
-      
-      <div className={classes.activePostCard}>
-      <div className={classes.categoryInputDiv}>
-        <input 
-          type="text" 
-          placeholder="what category?"
-          onChange={this.props.twoWayBindCategory}
-          value = {this.props.makePost.category}
-          className={classes.categoryInput}
-        />
-      </div>
-      
-      {/* <div className={classes.titleStyles}><h4 className={classes.headerStyles}>{this.props.title}</h4></div> */}
-      <input 
-            type="text" 
-            className={classes.articleTitleInput} 
-            placeholder="whats your title?"
-            onChange= {this.props.twoWayBindPostTitle}
-            value =  {this.props.makePost.title}
-            />
+          </PreviewModal> 
+        : null}
+        {this.props.makePost.modalOpen? 
+          <PostModal
+            clicked={this.props.toggleMakePostModal} 
+            post = {this.postArticle}
+          />  
+        : null}
+        <div className={classes.container}>
+          <div className={classes.activePostCard}>
+            <div className={classes.categoryInputDiv}>
+              <input 
+                type="text" 
+                placeholder="what category?"
+                onChange={this.props.twoWayBindCategory}
+                value = {this.props.makePost.category}
+                className={classes.categoryInput}
+              />
+            </div>
+            <input 
+                type="text" 
+                className={classes.articleTitleInput} 
+                placeholder="whats your title?"
+                onChange= {this.props.twoWayBindPostTitle}
+                value =  {this.props.makePost.title}
+                />
 
-      <div className={classes.articleTitleFooter}>
-      <div className={classes.author}> by- {this.props.author}</div>
-      <div className={classes.publishedDate}>Published On: {this.props.date}</div>
-      </div>
-      <div 
-       
-          style={
-              {
-                backgroundImage: 'url("' + this.props.makePost.img + '")',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                height: window.innerWidth<460? window.innerWidth*(2/3) : window.innerWidth*(.6)*(2/3),
-                opacity: '.75'
-              }
-            }>
-        <input className={classes.inputStyle}
-               type="text" 
-               placeholder='paste image Url'
-               onChange= {this.props.setMainImage}
-               value =  {this.props.makePost.image}
-               />
-      </div>
-      <div className={classes.imageFooter}>
-      <div className={classes.imageFotterLeft}>
-      <FontAwesome
-          className={classes.socialMediaLink}
-          name="thumbs-up"
-          size="2x"
-          // spin
-          style={{ color: 'gray' }}
-      /> <span className={classes.likes}>{this.props.likes}</span>
-      <FontAwesome
-          className={classes.socialMediaLink}
-          name="thumbs-down"
-          size="2x"
-          // spin
-          style={{ color: 'gray' }}
-      />  <span className={classes.dislikes}>{this.props.dislikes}</span>
-      </div>
-      <div className={classes.imageFotterRight}>
-      <a href="" className={classes.facebookLink}>
-      <FontAwesome
-          className={classes.facebookShareLink}
-          name="facebook"
-          size="1x"
-          // spin
-          style={{ color: 'white' }}
-      /> 
-      </a>
-      <a href="" className={classes.twitterLink}>
-      <FontAwesome
-         
-          name="twitter"
-          size="1x"
-          // spin
-          style={{ color: 'white' }}
-      /> 
-      </a>
-      <a href="" className={classes.linkedInLink}>
-      <FontAwesome
-         
-          name="linkedin"
-          size="1x"
-          // spin
-          style={{ color: 'white' }}
-      /> 
-      </a>
-      </div>
-      </div>
-  
-      
-      </div>
-      {/* <div className={classes.postText}>
-
-      </div> */}
-      {this.props.makePost.bodyArr.map((el, index) => {
-        
+            <div className={classes.articleTitleFooter}>
+              <div className={classes.author}> by- {this.props.author}</div>
+              <div className={classes.publishedDate}>Published On: {this.props.date}</div>
+            </div>
+            <div 
+              style={
+                  {
+                    backgroundImage: 'url("' + this.props.makePost.img + '")',
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    height: window.innerWidth<460? window.innerWidth*(2/3) : window.innerWidth*(.6)*(2/3),
+                    opacity: '.75'
+                  }
+                }>
+              <input className={classes.inputStyle}
+                type="text" 
+                placeholder='paste image Url'
+                onChange= {this.props.setMainImage}
+                value =  {this.props.makePost.image}
+                />
+            </div>
+            <div className={classes.imageFooter}>
+              <div className={classes.imageFotterLeft}>
+                <FontAwesome
+                    className={classes.socialMediaLink}
+                    name="thumbs-up"
+                    size="2x"
+                    style={{ color: 'gray' }}
+                /> 
+                <span className={classes.likes}>{this.props.likes}</span>
+                <FontAwesome
+                    className={classes.socialMediaLink}
+                    name="thumbs-down"
+                    size="2x"
+                    style={{ color: 'gray' }}
+                /> 
+                <span className={classes.dislikes}>{this.props.dislikes}</span>
+              </div>
+              <div className={classes.imageFotterRight}>
+                <a href="" className={classes.facebookLink}>
+                  <FontAwesome
+                      className={classes.facebookShareLink}
+                      name="facebook"
+                      size="1x"
+                      style={{ color: 'white' }}
+                  /> 
+                </a>
+                <a href="" className={classes.twitterLink}>
+                  <FontAwesome
+                      name="twitter"
+                      size="1x"
+                      style={{ color: 'white' }}
+                  /> 
+                </a>
+                <a href="" className={classes.linkedInLink}>
+                  <FontAwesome
+                      name="linkedin"
+                      size="1x"
+                      // spin
+                      style={{ color: 'white' }}
+                  /> 
+                </a>
+              </div>
+            </div>
+          </div>
+        {
+          //fetches the elements of the post from the redux store and lists them on the page
+        }
+        {this.props.makePost.bodyArr.map((el, index) => {
           if(el.type == 'textArea') {
             return(
               <div   key={index} >
@@ -195,7 +177,6 @@ onImgLoad = ({target:img}) => {
                     placeholder="type text..."
                     onChange={(event) => this.props.twoWayBindParagraphText(event,index)}
                     value={this.props.makePost.bodyArr[index].value}
-                  
                     />
                   <FontAwesome
                     className= {classes.deleteIcon}
@@ -219,7 +200,6 @@ onImgLoad = ({target:img}) => {
                     placeholder="header..."
                     onChange={(event) => this.props.twoWayBindParagraphText(event,index)}
                     value={this.props.makePost.bodyArr[index].value}
-                   
                     />
                   <FontAwesome
                     className= {classes.deleteIcon}
@@ -231,80 +211,60 @@ onImgLoad = ({target:img}) => {
                 <br/>
                 <br/>
               </div>
-
             )
           } else if (el.type == 'image') {
-            // const imageStyles={
-            //   backgroundImage: 'url("' + this.props.makePost.bodyArr[index].value + '")',
-            //   backgroundPosition: 'center center',
-            //   backgroundRepeat: 'no-repeat',
-           
-           
-            //   display: 'block'
-            // }
-            // const image = <img src={this.props.makePost.bodyArr[index].value}/>
-           
-            return (
-              <div key={index}>
-                <div className={classes.imageDivContainer}>
-                <div style={imageStyles} className={classes.imageInputDiv}>
-                <input 
-                  type="text" 
-                  placeholder="image Url" 
-                  className={classes.bodyImageInput}
-                  onChange={(event) => this.props.twoWayBindParagraphText(event,index)}
-                  value={this.props.makePost.bodyArr[index].value}
-                  
-                />
-               <FontAwesome
-                  className= {classes.deleteIcon}
-                  name="times"
-                  size="1x"
-                  onClick={() => this.props.removeItemFromPost(index) }
-                  />
-                
+              return (
+                <div key={index}>
+                  <div className={classes.imageDivContainer}>
+                    <div style={imageStyles} className={classes.imageInputDiv}>
+                      <input 
+                        type="text" 
+                        placeholder="image Url" 
+                        className={classes.bodyImageInput}
+                        onChange={(event) => this.props.twoWayBindParagraphText(event,index)}
+                        value={this.props.makePost.bodyArr[index].value}
+                      />
+                      <FontAwesome
+                        className= {classes.deleteIcon}
+                        name="times"
+                        size="1x"
+                        onClick={() => this.props.removeItemFromPost(index) }
+                        />
+                    </div>
+                    <br/>
+                    <img  
+                      src={this.props.makePost.bodyArr[index].value}
+                      onLoad={this.onImgLoad}
+                      className={classes.postImage}
+                      style={{width: this.state.imgWidth, 
+                              height: this.state.imgHeight}}
+                    />
+                  </div>
+                  <br/>
+                  <br/>
                 </div>
-                <br/>
-              
-                  <img  
-                    src={this.props.makePost.bodyArr[index].value}
-                    onLoad={this.onImgLoad}
-                    className={classes.postImage}
-                    style={{width: this.state.imgWidth, height: this.state.imgHeight}}
-                  />
-                </div>
-                <br/>
-                <br/>
-
-              
-              </div>
-            )
-            
+              )
           }
         })}
 
-        <div className={classes.bottomPostButtonsDiv}>
-          <button 
-            className={classes.previewButton}
-            onClick={this.togglePreviewModal}
-          >
-            
-            Preview
-          </button>
-          <button 
-            className={classes.postButton}
-            onClick={this.toggleMakePostModal}
-          >
-            Post
-          </button>
-        </div>
+      <div className={classes.bottomPostButtonsDiv}>
+        <button 
+          className={classes.previewButton}
+          onClick={this.togglePreviewModal}
+        >
+          
+          Preview
+        </button>
+        <button 
+          className={classes.postButton}
+          onClick={this.toggleMakePostModal}
+        >
+          Post
+        </button>
+      </div>
     </div>
-
     <Footer/>
   </div>
-      
-
-    
   )
   }
 
