@@ -40,6 +40,8 @@ toggleMakePostModal= () => {
 
 //after yes is clicked on the "are you sure" modal this function publishes post to the database
 postArticle = () => {
+  console.log(this.props.makePost);
+
   this.props.publishPostToDatabase(this.props.makePost, this.props.auth, this.props.history)
 }
 

@@ -110,24 +110,48 @@ export const publishPost = (postState, authState, history) => dispatch => {
 
   const id = postState.id;
 
-  axios.post('/api/posts/'+id, postObject).then(response => {
-    console.log(response.data)
-    dispatch(resetState());
-    const location = history.location;
+  if (id) {
+    axios.post('/api/posts/'+id, postObject).then(response => {
+      console.log(response.data)
+      dispatch(resetState());
+      const location = history.location;
+  
+      // Listen for changes to the current location.
+      const unlisten = history.listen((location) => {
+        // location is an object like window.location
+        console.log('pathname:::', location.pathname);
+      });
+  
+      history.push('/');
+      // window.location.reload();
+      // return response;
+  
+    }).catch(err => {
+      console.log('ERROR PUBLISHING POST:::', err);
+      dispatch(handlePublishError());
+    })
+  } else {
+    axios.post('/api/posts/', postObject).then(response => {
+      console.log(response.data)
+      dispatch(resetState());
+      const location = history.location;
+  
+      // Listen for changes to the current location.
+      const unlisten = history.listen((location) => {
+        // location is an object like window.location
+        console.log('pathname:::', location.pathname);
+      });
+  
+      history.push('/');
+      // window.location.reload();
+      // return response;
+  
+    }).catch(err => {
+      console.log('ERROR PUBLISHING POST:::', err);
+      dispatch(handlePublishError());
+    })
+  }
 
-    // Listen for changes to the current location.
-    const unlisten = history.listen((location) => {
-      // location is an object like window.location
-      console.log('pathname:::', location.pathname);
-    });
 
-    history.push('/');
-    // window.location.reload();
-    // return response;
-
-  }).catch(err => {
-    console.log('ERROR PUBLISHING POST:::', err);
-    dispatch(handlePublishError());
-})
 }
 
