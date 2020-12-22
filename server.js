@@ -10,9 +10,7 @@ const users = require("./routes/api/users");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Define middleware here
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+// allow for data transfer via url, and use of req.body json
 app.use(
   bodyParser.urlencoded({
     extended: false
@@ -24,36 +22,16 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/communityblog").then(() => {
   console.log('mongodb connected')
 })
 
 
-// mongoose.connect("mongodb+srv://ayoussefinia:5e68UNK1MaUa2mFj@cluster0.uescv.mongodb.net/Blog?retryWrites=true&w=majority")
-//   .then(() => {
-//     console.log('mongodb connected')
-//   })
-
-
-// const db = require("./config/keys").mongoURI;
-// mongoose
-//   .connect(
-//     db,
-//     { useNewUrlParser: true }
-//   )
-//   .then(() => console.log("MongoDB successfully connected"))
-//   .catch(err => console.log(err));
-  
-// Passport middleware
+// Passport middleware for authenticating requests
 app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
-
-
-// Routes
-// app.use("/api/users", users);
 
 // Add routes, both API and view
 app.use(routes);

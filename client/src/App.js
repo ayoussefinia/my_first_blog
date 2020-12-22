@@ -1,23 +1,24 @@
 import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// Authentication
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
+// Redux
 import { Provider } from "react-redux";
 import store from "./store";
 
+//Components & Pages
 import MyPosts from "./components/Posts/MyPosts/MyPosts"
-import Nav from "./components/Nav/Nav";
-import SecondNav from "./components/Nav/SecondaryNav/SecondaryNav";
-import SideDrawer from './components/Nav/SideDrawer/SideDrawer';
-import Body from "./components/Body/Body";
+import NoMatch from './pages/NoMatch';
+import Home from './pages/Home/Home';
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-import MakeAPost from "./components/Posts/MakeAPost/MakeAPost";
-import Footer from "./components/Footer/Footer";
+import MakeAPost from "./pages/MakeAPost/MakeAPost";
 import PreviewPost from "./components/Posts/PreviewPost/PreviewPost"
 import CommentSharePost from "./components/Posts/CommentSharePost/CommentSharePost";
 import EditPost from "./components/Posts/EditPost/EditPost";
@@ -34,12 +35,12 @@ if (localStorage.jwtToken) {
 
 // Check for expired token
 const currentTime = Date.now() / 1000; // to get in milliseconds
-if (decoded.exp < currentTime) {
-  // Logout user
-  store.dispatch(logoutUser());
-  // Redirect to login
-  window.location.href = "./login";
-}
+  if (decoded.exp < currentTime) {
+    // Logout user
+    store.dispatch(logoutUser());
+    // Redirect to login
+    window.location.href = "./login";
+  }
 }
 
 function App() {
@@ -47,28 +48,18 @@ function App() {
     <Provider store={store}>
       <Router>
         <div >
-        {/* <SideDrawer/>
-            <Nav />
-        <SecondNav/> */}
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-
           <Switch>
-
-            <Route exact path="/" component={Body} />
-            {/* <Route exact path="/books" component={Books} />
-            <Route exact path="/books/:id" component={Detail} />
-            <Route component={NoMatch} /> */}
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/post/:id" component={CommentSharePost} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/makePost" component={MakeAPost} />
             <PrivateRoute exact path="/myPosts" component={MyPosts} />
             <PrivateRoute exact path="/editPost" component={EditPost} />
             <PrivateRoute exact path="/preview" component={PreviewPost} />
+            <Route path='/*' component={NoMatch}/>
           </Switch>
-
-            
-            {/* <Footer/> */}
         </div>
       </Router>
     </Provider>
